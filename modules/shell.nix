@@ -3,7 +3,7 @@
 {
   # Packages
   environment.systemPackages = with pkgs; [
-  #  devenv
+    devenv
     fzf
     ripgrep
   ];
