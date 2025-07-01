@@ -13,6 +13,8 @@
       packages.myVimPackages.start = with pkgs.vimPlugins; [
         gitsigns-nvim
         lualine-nvim
+        nvim-lspconfig
+        nvim-cmp
         nvim-tree-lua
         nvim-treesitter.withAllGrammars
         nvim-treesitter-textobjects
@@ -23,5 +25,9 @@
       ];
     };
   };
+  environment.systemPackages = with pkgs; [
+    typescript-language-server
+    vue-language-server
+  ];
 }
 

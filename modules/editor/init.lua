@@ -27,11 +27,16 @@ vim.opt.hlsearch = true
 vim.opt.termguicolors = true
 
 -- Generic Keybinds
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Find" })
+vim.keymap.set("n", "<leader>p", vim.cmd.Ex, { desc = "Find" })
 vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save" })
 vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>gi", { desc = "Save" })
 
 -- gitsigns
 require("gitsigns").setup()
+
+-- nvim-cmp
+require("cmp").setup()
 
 -- nvim-tree
 require("nvim-tree").setup()
@@ -56,4 +61,27 @@ require("telescope").setup{
     },
   },
 }
+
+-- typescript-language-server
+require('lspconfig').ts_ls.setup({})
+
+-- vue-language-server
+require('lspconfig').volar.setup({
+  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+  root_dir = require('lspconfig.util').root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git'),
+})
+
+--vim.lsp.enable('typescript-language-server')
+--vim.lsp.config('typescript-language-server', {
+--  settings = {
+--    ["typescript-language-server"] = {},
+--  },
+--})
+
+--vim.lsp.enable('vue-language-server')
+--vim.lsp.config('vue-language-server', {
+--  settings = {
+--    ["vue-language-server"] = {},
+--  },
+--})
 
