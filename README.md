@@ -1,6 +1,6 @@
-# NixOS Flakes
+# NixOS Modules Flake
 
-A collection of configuration modules for [NixOS] in the form of [flakes].
+A collection of configuration modules for [NixOS] in the form of a [flake].
 
 ## Install
 
@@ -9,7 +9,7 @@ A collection of configuration modules for [NixOS] in the form of [flakes].
 2. (optional) Clone this repo into `/etc/` if you intend on modifying it:
 
     ```bash
-    git clone git@github.com:NTARelix/nixos-flakes /etc/nixos-flakes
+    git clone git@github.com:NTARelix/nixos-modules-flake /etc/nixos-modules-flake
     ```
 
 3. Configure your main NixOS configuration to enable flakes:
@@ -42,9 +42,9 @@ A collection of configuration modules for [NixOS] in the form of [flakes].
         inputs = {
             nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
             # change the following path to wherever you cloned this repo
-            shared-modules.url = "path:/etc/nixos-flakes";
+            shared-modules.url = "path:/etc/nixos-modules-flake";
             # or use this line instead if you didn't clone the repo in step #2
-            # shared-modules.url = "github:NTARelix/nixos-flakes/master";
+            # shared-modules.url = "github:NTARelix/nixos-modules-flake/master";
         };
         outputs = { self, nixpkgs, shared-modules ... }@inputs: {
             # replace my-nixos with your hostname
@@ -79,6 +79,7 @@ If you cloned this repo and made changes to any of the modules then you'll need 
 NOTE: I've found that I also need to update the flakes, but I haven't confirmed when exactly that step is necessary.
 
 ```bash
+cd /etc/nixos/
 sudo nix flake update && sudo nixos-rebuild switch
 ```
 
@@ -87,6 +88,7 @@ sudo nix flake update && sudo nixos-rebuild switch
 NixOS in WSL seems to require the `--impure` flag when rebuilding NixOS.
 
 ```bash
+cd /etc/nixos
 sudo nix flake update && sudo nixos-rebuild switch --impure
 ```
 
