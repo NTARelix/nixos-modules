@@ -92,7 +92,7 @@ cd /etc/nixos
 sudo nix flake update && sudo nixos-rebuild switch --impure
 ```
 
-[Flakes]: https://wiki.nixos.org/wiki/Flakes
+[Flake]: https://wiki.nixos.org/wiki/Flakes
 [NixOS]: https://nixos.org/
 [WSL]: https://learn.microsoft.com/en-us/windows/wsl/
 
