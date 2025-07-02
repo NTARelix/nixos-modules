@@ -11,7 +11,7 @@
     defaultEditor = true;
     configure = {
       customRC = ''
-        lua dofile('/etc/nixos-flakes/modules/editor/init.lua')
+        lua dofile('/etc/nixos-modules-flake/modules/editor/init.lua')
       '';
       packages.myVimPackages.start = with pkgs.vimPlugins; [
         gitsigns-nvim
