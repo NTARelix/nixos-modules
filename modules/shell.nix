@@ -1,4 +1,10 @@
-
+# The primary shell: Oh My Zsh (https://ohmyz.sh/).
+# Makes terminal use much friendlier than most defaults.
+# RECOMMENDED: configure your terminal to use a particular font as specified by p10k:
+#    https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#fonts
+# Configured here with NixOS, as well as a generated p10k theme config in `./shell/p10k.zsh`.
+# Also adds tools for command-line convenience.
+# All plugins are managed here with NixOS.
 { config, lib, pkgs, ... }:
 {
   # Packages

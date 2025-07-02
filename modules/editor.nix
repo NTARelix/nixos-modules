@@ -1,4 +1,7 @@
-
+# The primary editor of the system: Neovim (https://neovim.io/).
+# Configured via `./editor/init.lua`.
+# Run in any shell with `vi`, `vim`, or `nvim`.
+# Uses NixOS to install all plugins and language servers.
 { config, lib, pkgs, ... }:
 {
   programs.neovim = {
