@@ -72,6 +72,24 @@ A collection of configuration modules for [NixOS] in the form of [flakes].
     sudo nixos-rebuild switch
     ```
 
+## Updating flakes
+
+If you cloned this repo and made changes to any of the modules then you'll need to rebuild nixos.
+
+NOTE: I've found that I also need to update the flakes, but I haven't confirmed when exactly that step is necessary.
+
+```bash
+sudo nix flake update && sudo nixos-rebuild switch
+```
+
+### WSL
+
+NixOS in WSL seems to require the `--impure` flag when rebuilding NixOS.
+
+```bash
+sudo nix flake update && sudo nixos-rebuild switch --impure
+```
+
 [Flakes]: https://wiki.nixos.org/wiki/Flakes
 [NixOS]: https://nixos.org/
 [WSL]: https://learn.microsoft.com/en-us/windows/wsl/
