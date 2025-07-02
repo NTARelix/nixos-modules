@@ -4,7 +4,7 @@ A collection of configuration modules for [NixOS] in the form of a [flake].
 
 ## Install
 
-1. Have root access in [NixOS] (works in [WSL])
+1. Have root access in NixOS (works in [WSL])
 
 2. (optional) Clone this repo into `/etc/` if you intend on modifying it:
 
