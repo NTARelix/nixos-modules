@@ -2,6 +2,7 @@
 vim.g.mapleader = " "
 
 -- Options
+vim.cmd("colorscheme carbonfox")
 vim.opt.list = true
 vim.opt.listchars = {
     tab = "»·",

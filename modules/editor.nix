@@ -17,6 +17,7 @@
                 start = with pkgs.vimPlugins; [
                     gitsigns-nvim
                     lualine-nvim
+                    nightfox-nvim
                     nvim-lspconfig
                     nvim-cmp
                     nvim-tree-lua
