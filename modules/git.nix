@@ -5,16 +5,16 @@
 # I.e. `ssh-keygen` and `~/.ssh`.
 { config, lib, pkgs, ... }:
 {
-  programs.git = {
-    enable = true;
-    config = {
-      core.excludesFile = "~/.gitignore";
-      diff.algorithm = "patience";
-      merge.conflictStyle = "diff3";
-      merge.ff = "only";
-      push.autoSetupRemote = true;
-      user.name = "Kevin Koshiol";
+    programs.git = {
+        enable = true;
+        config = {
+            core.excludesFile = "~/.gitignore";
+            diff.algorithm = "patience";
+            merge.conflictStyle = "diff3";
+            merge.ff = "only";
+            push.autoSetupRemote = true;
+            user.name = "Kevin Koshiol";
+        };
     };
-  };
 }
 

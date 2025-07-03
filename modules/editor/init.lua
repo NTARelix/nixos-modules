@@ -4,11 +4,11 @@ vim.g.mapleader = " "
 -- Options
 vim.opt.list = true
 vim.opt.listchars = {
-  tab = "»·",
-  multispace = "·",
-  lead = "·",
-  leadmultispace = "|···",
-  trail = "·",
+    tab = "»·",
+    multispace = "·",
+    lead = "·",
+    leadmultispace = "|···",
+    trail = "·",
 }
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -26,7 +26,7 @@ vim.opt.incsearch = true
 vim.opt.hlsearch = true
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "120"
 
 -- Generic Keybinds
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = "Format" })
