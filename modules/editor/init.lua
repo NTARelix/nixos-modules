@@ -51,52 +51,10 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<leader><leader>", ":so %<CR>", { desc = "Source" })
 
---- Utility Funcs
--------------------------------------------------------------------------------
-local lsp_loaded = false
-local function get_lsp()
-    if not lsp_loaded then
-        lsp_loaded = true
-    end
-    return require("lspconfig")
-end
-
--- Recursively searches upward for a filename
-local function find_path(name, path, debug)
-    if debug then print("find_path(" .. name .. ", " .. path .. ", " .. tostring(debug) ..")") end
-    local pkg_path = path .. "/" .. name
-    local stat = vim.loop.fs_stat(pkg_path)
-    if stat then
-        if debug then print("  => " .. pkg_path) end
-        return pkg_path
-    end
-    local parent = vim.fn.fnamemodify(path, ":h")
-    if parent == path then return nil end
-    return find_path(name, parent, debug)
-end
-
-local function get_file_content(path)
-    local fd = io.open(path, "r")
-    if not fd then return false end
-    local content = fd:read("*a")
-    fd:close()
-    return content
-end
-
-local function package_has_dep(dep, path)
-    local pkg_path = find_path("package.json", path)
-    if not pkg_path then return false end
-    local pkg_str = get_file_content(pkg_path)
-    if not pkg_str then return false end
-    local ok, pkg = pcall(vim.fn.json_decode, pkg_str)
-    if not ok or not pkg then return false end
-    local deps = vim.tbl_extend("force", pkg.dependencies or {}, pkg.devDependencies or {})
-    return deps[dep] ~= nil
-end
-
 -- Plugins
 -------------------------------------------------------------------------------
-require("cmp").setup()
+require("blink-cmp").setup()
+require("gitsigns").setup()
 require("lualine").setup()
 require("nvim-tree").setup()
 require("nvim-treesitter").setup()
@@ -117,26 +75,45 @@ require("which-key").setup({
     },
 })
 
--- Lazy plugins
+-- LSP Config
 -------------------------------------------------------------------------------
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function(args)
-        local cwd = vim.fn.getcwd()
-        if not package_has_dep("vue", cwd) then return end
-        vim.cmd("packadd nvim-lspconfig")
-        require("lspconfig").volar.setup({
-            filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-            root_dir = require('lspconfig.util').root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git'),
-        })
-    end,
-    once = true,
+vim.lsp.config("vtsls", {
+    filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+    settings = {
+        vtsls = {
+            tsserver = {
+                globalPlugins = {
+                    vue_plugin,
+                },
+            },
+        },
+    },
 })
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function(args)
-        local cwd = vim.fn.getcwd()
-        if find_path(".git", cwd) == nil then return end
-        vim.cmd("packadd gitsigns.nvim")
-        require("gitsigns").setup()
+vim.lsp.config("vue_ls", {
+    on_init = function(client)
+        client.handlers["tsserver/request"] = function(_, result, context)
+            local clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = "vtsls" })
+            if #clients == 0 then
+                vim.notify("Could not find `vtsls` lsp client, vue_lsp would not work without it.", vim.log.levels.ERROR)
+                return
+            end
+            local ts_client = clients[1]
+            local param = unpack(result)
+            local id, command, payload = unpack(param)
+            ts_client:exec_cmd(
+                {
+                    title = "",
+                    command = "",
+                    arguments = { command, payload },
+                },
+                { bufnr = context.bufnr },
+                function(_, r)
+                    local response_data = { { id, r.body } }
+                    client:notify("tsserver/response", response_data)
+                end
+            )
+        end
     end,
 })
+vim.lsp.enable({ "vtsls", "vue_ls" })
 

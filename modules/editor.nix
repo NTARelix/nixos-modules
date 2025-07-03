@@ -13,28 +13,25 @@
             customRC = ''
                 lua dofile('/etc/nixos-modules-flake/modules/editor/init.lua')
             '';
-            packages.myVimPackages = {
-                start = with pkgs.vimPlugins; [
-                    lualine-nvim
-                    nightfox-nvim
-                    nvim-tree-lua
-                    nvim-treesitter-textobjects
-                    nvim-treesitter.withAllGrammars
-                    nvim-web-devicons
-                    telescope-nvim
-                    vim-visual-multi
-                    which-key-nvim
-                ];
-                opt = with pkgs.vimPlugins; [
-                    gitsigns-nvim
-                    nvim-cmp
-                    nvim-lspconfig
-                ];
-            };
+            packages.myVimPackages.start = with pkgs.vimPlugins; [
+                lualine-nvim
+                nightfox-nvim
+                nvim-tree-lua
+                nvim-treesitter-textobjects
+                nvim-treesitter.withAllGrammars
+                nvim-web-devicons
+                telescope-nvim
+                vim-visual-multi
+                which-key-nvim
+                blink-cmp
+                gitsigns-nvim
+                nvim-lspconfig
+            ];
         };
     };
     environment.systemPackages = with pkgs; [
         typescript-language-server
+        vtsls
         vue-language-server
     ];
 }
