@@ -4,22 +4,22 @@ vim.g.mapleader = " "
 -- Modes
 vim.keymap.set("n", "<leader>z", ":NvimTreeToggle<cr>", { desc = "Distraction free" })
 
-require("which-key").add({ "<leader>f", group = "Files" })
+require("which-key").add({ "<leader>f", group = "File" })
 vim.keymap.set("n", "<leader>fs", "<cmd>Telescope find_files<cr>", { desc = "Search" })
 vim.keymap.set("n", "<leader>fn", "<cmd>echo 'not yet implemented'<cr>", { desc = "New" })
 vim.keymap.set("n", "<C-s>", ":w<cr>", { desc = "Save" })
 vim.keymap.set("i", "<C-s>", "<esc>:w<cr>gi", { desc = "Save" })
 vim.keymap.set("n", "<leader><leader>", ":so %<CR>", { desc = "Source" })
 
--- Text
+require("which-key").add({ "<leader>t", group = "Text" })
 vim.keymap.set("n", "<leader>ts", "<cmd>Telescope live_grep<cr>", { desc = "Search" })
 vim.keymap.set("n", "<leader>tr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace" })
 
--- Buffers
+require("which-key").add({ "<leader>b", group = "Buffer" })
 vim.keymap.set("n", "<leader>bf", vim.lsp.buf.format, { desc = "Format" })
 vim.keymap.set("n", "<leader>bs", "<cmd>Telescope buffers<cr>", { desc = "Search" })
 
--- Help
+vim.keymap.set("n", "<leader>g", ":LazyGit<cr>", { desc = "Git" })
 vim.keymap.set("n", "<leader>h", "<cmd>Telescope help_tags<cr>", { desc = "Help" })
 
 -- Manipulation
