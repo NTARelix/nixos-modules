@@ -1,38 +1,47 @@
 -- Leader
 vim.g.mapleader = " "
 
+-- Helpers
+function map(mode, lhs, rhs, desc)
+    vim.keymap.set(mode, lhs, rhs, {
+        noremap = true,
+        silent = true,
+        desc = desc,
+    })
+end
+
 -- Modes
-vim.keymap.set("n", "<leader>z", ":NvimTreeToggle<cr>", { desc = "Distraction free" })
+map("n", "<leader>z", [[:NvimTreeToggle<cr>]], "Distraction free")
 
 require("which-key").add({ "<leader>f", group = "File" })
-vim.keymap.set("n", "<leader>fs", "<cmd>Telescope find_files<cr>", { desc = "Search" })
-vim.keymap.set("n", "<leader>fn", "<cmd>echo 'not yet implemented'<cr>", { desc = "New" })
-vim.keymap.set("n", "<C-s>", ":w<cr>", { desc = "Save" })
-vim.keymap.set("i", "<C-s>", "<esc>:w<cr>gi", { desc = "Save" })
-vim.keymap.set("n", "<leader><leader>", ":so %<CR>", { desc = "Source" })
+map("n", "<leader>fs", [[<cmd>Telescope find_files<cr>]], "Search")
+map("n", "<leader>fn", [[<cmd>echo 'not yet implemented'<cr>]], "New")
+map("n", "<C-s>", [[:w<cr>]], "Save")
+map("i", "<C-s>", [[<esc>:w<cr>gi]], "Save")
+map("n", "<leader><leader>", [[:so %<CR>]], "Source")
 
 require("which-key").add({ "<leader>t", group = "Text" })
-vim.keymap.set("n", "<leader>ts", "<cmd>Telescope live_grep<cr>", { desc = "Search" })
-vim.keymap.set("n", "<leader>tr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace" })
+map("n", "<leader>ts", [[<cmd>Telescope live_grep<cr>]], "Search")
+map("n", "<leader>tr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Replace")
 
 require("which-key").add({ "<leader>b", group = "Buffer" })
-vim.keymap.set("n", "<leader>bf", vim.lsp.buf.format, { desc = "Format" })
-vim.keymap.set("n", "<leader>bs", "<cmd>Telescope buffers<cr>", { desc = "Search" })
+map("n", "<leader>bf", vim.lsp.buf.format, "Format")
+map("n", "<leader>bs", [[<cmd>Telescope buffers<cr>]], "Search")
 
-vim.keymap.set("n", "<leader>g", ":LazyGit<cr>", { desc = "Git" })
-vim.keymap.set("n", "<leader>h", "<cmd>Telescope help_tags<cr>", { desc = "Help" })
+map("n", "<leader>g", [[:LazyGit<cr>]], "Git")
+map("n", "<leader>h", [[<cmd>Telescope help_tags<cr>]], "Help")
 
 -- Manipulation
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Swap ↓" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Swap ↑" })
-vim.keymap.set("n", "J", "mzJ`z", { desc = "Join" })
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]], { desc = "Delete" })
-vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste" })
+map("v", "J", [[:m '>+1<CR>gv=gv]], "Swap ↓")
+map("v", "K", [[:m '<-2<CR>gv=gv]], "Swap ↑")
+map("n", "J", [[mzJ`z]], "Join")
+map({"n", "v"}, "<leader>d", [["_d]], "Delete")
+map("x", "<leader>p", [["_dP]], "Paste")
 
 -- Overwrite defaults
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down" })
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up" })
-vim.keymap.set("n", "n", "nzzzv", { desc = "Next" })
-vim.keymap.set("n", "N", "Nzzzv", { desc = "Prev" })
-vim.keymap.set("n", "Q", "<nop>")
+map("n", "<C-d>", [[<C-d>zz]], "Scroll down")
+map("n", "<C-u>", [[<C-u>zz]], "Scroll up")
+map("n", "n", [[nzzzv]], "Next")
+map("n", "N", [[Nzzzv]], "Prev")
+map("n", "Q", [[<nop>]])
 
