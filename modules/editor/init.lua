@@ -1,5 +1,5 @@
 require("colorscheme")
-require("keybinds")
+require("keymap")
 require("lsp")
 require("options")
 require("plugins-blink-cmp")
