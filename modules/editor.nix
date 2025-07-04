@@ -15,8 +15,11 @@
                 lua dofile('/etc/nixos-modules-flake/modules/editor/init.lua')
             '';
             packages.myVimPackages.start = with pkgs.vimPlugins; [
+                blink-cmp
+                gitsigns-nvim
                 lualine-nvim
                 nightfox-nvim
+                nvim-lspconfig
                 nvim-tree-lua
                 nvim-treesitter-textobjects
                 nvim-treesitter.withAllGrammars
@@ -24,9 +27,6 @@
                 telescope-nvim
                 vim-visual-multi
                 which-key-nvim
-                blink-cmp
-                gitsigns-nvim
-                nvim-lspconfig
             ];
         };
     };
