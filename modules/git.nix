@@ -9,7 +9,7 @@
         enable = true;
         config = {
             core.excludesFile = "~/.gitignore";
-            core.pager = "cat";
+            core.pager = "less -FX";
             diff.algorithm = "patience";
             merge.conflictStyle = "diff3";
             merge.ff = "only";
