@@ -45,6 +45,8 @@ map("n", "<leader>gh", [[<cmd>Telescope git_stash<cr>]], "Stash")
 map("n", "<leader>gl", [[<cmd>Telescope git_commits<cr>]], "Log")
 map("n", "<leader>gc", [[:Git commit<cr>]], "Commit")
 map("n", "<leader>gr", [[:Git rebase -i<cr>]], "Rebase")
+map("n", "<leader>gp", [[:Git pull<cr>]], "Pull")
+map("n", "<leader>gP", [[:Git push<cr>]], "Push")
 
 -- Help
 map("n", "<leader>h", [[<cmd>Telescope help_tags<cr>]], "Help")
