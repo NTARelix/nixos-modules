@@ -16,6 +16,7 @@
             '';
             packages.myVimPackages.start = with pkgs.vimPlugins; [
                 blink-cmp
+                vim-fugitive
                 gitsigns-nvim
                 lualine-nvim
                 nightfox-nvim
