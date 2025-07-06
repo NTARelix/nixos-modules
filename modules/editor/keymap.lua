@@ -48,8 +48,9 @@ map("n", "<leader>gr", [[:Git rebase -i<cr>]], "Rebase")
 map("n", "<leader>gp", [[:Git pull<cr>]], "Pull")
 map("n", "<leader>gP", [[:Git push<cr>]], "Push")
 
--- Help
+-- Single-key mappings
 map("n", "<leader>h", [[<cmd>Telescope help_tags<cr>]], "Help")
+map("n", "<leader>q", [[:wqa<cr>]], "Help")
 
 -- Window movement
 map("n", "<c-h>", [[<c-w>h]], "Focus left")
