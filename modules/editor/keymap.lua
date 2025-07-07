@@ -2,7 +2,13 @@
 vim.g.mapleader = " "
 
 -- Helpers
-function map(mode, lhs, rhs, desc)
+
+--- Convenience wrapper around `vim.keymap.set`
+---@param mode string|string[]
+---@param lhs string
+---@param rhs string
+---@param desc string
+local function map(mode, lhs, rhs, desc)
     vim.keymap.set(mode, lhs, rhs, {
         noremap = true,
         silent = true,
@@ -82,5 +88,5 @@ map("n", "n", [[nzzzv]], "Next")
 map("n", "N", [[Nzzzv]], "Prev")
 map("v", ">", [[>gv]], "Indent")
 map("v", "<", [[<gv]], "Dedent")
-map("n", "Q", [[<nop>]])
+vim.keymap.del("x", "Q")
 
