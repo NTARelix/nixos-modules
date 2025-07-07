@@ -6,7 +6,7 @@ vim.g.mapleader = " "
 --- Convenience wrapper around `vim.keymap.set`
 ---@param mode string|string[]
 ---@param lhs string
----@param rhs string
+---@param rhs string|function
 ---@param desc string
 local function map(mode, lhs, rhs, desc)
     vim.keymap.set(mode, lhs, rhs, {
@@ -53,6 +53,34 @@ map("n", "<leader>gc", [[:Git commit<cr>]], "Commit")
 map("n", "<leader>gr", [[:Git rebase -i<cr>]], "Rebase")
 map("n", "<leader>gp", [[:Git pull<cr>]], "Pull")
 map("n", "<leader>gP", [[:Git push<cr>]], "Push")
+
+require("which-key").add({ "<leader>h", group = "Hunk" })
+map("n", "<leader>hs", require("gitsigns").stage_hunk, "Stage")
+map("n", "<leader>hr", require("gitsigns").reset_hunk, "Reset")
+map("v", "<leader>hs", function()
+    require("gitsigns").stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+end, "Stage")
+map("v", "<leader>hr", function()
+    require("gitsigns").reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+end, "Reset")
+map("n", "<leader>hS", require("gitsigns").stage_buffer, "Stage buffer")
+map("n", "<leader>hR", require("gitsigns").reset_buffer, "Reset buffer")
+map("n", "<leader>hp", require("gitsigns").preview_hunk, "Preview")
+map("n", "<leader>hd", require("gitsigns").diffthis, "Diff")
+map("n", "]c", function()
+    if vim.wo.diff then
+        vim.cmd.normal({"]c", bang = true})
+    else
+        require("gitsigns").nav_hunk("next")
+    end
+end, "Next hunk")
+map("n", "[c", function()
+    if vim.wo.diff then
+        vim.cmd.normal({"[c", bang = true})
+    else
+        require("gitsigns").nav_hunk("next")
+    end
+end, "Next hunk")
 
 -- Single-key mappings
 map("n", "<leader>?", [[<cmd>Telescope help_tags<cr>]], "Help")
