@@ -32,6 +32,7 @@
         };
     };
     environment.systemPackages = with pkgs; [
+        lua-language-server
         typescript-language-server
         vtsls
         vue-language-server
