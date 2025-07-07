@@ -49,7 +49,7 @@ map("n", "<leader>gp", [[:Git pull<cr>]], "Pull")
 map("n", "<leader>gP", [[:Git push<cr>]], "Push")
 
 -- Single-key mappings
-map("n", "<leader>h", [[<cmd>Telescope help_tags<cr>]], "Help")
+map("n", "<leader>?", [[<cmd>Telescope help_tags<cr>]], "Help")
 map("n", "<leader>q", [[:wqa<cr>]], "Help")
 
 -- Window movement
