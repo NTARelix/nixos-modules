@@ -5,7 +5,7 @@
 # Configured here with NixOS, as well as a generated p10k theme config in `./shell/p10k.zsh`.
 # Also adds tools for command-line convenience.
 # All plugins are managed here with NixOS.
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 {
     # Packages
     environment.systemPackages = with pkgs; [

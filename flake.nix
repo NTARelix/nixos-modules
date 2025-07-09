@@ -3,7 +3,7 @@
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     };
-    outputs = { nixpkgs, ... }: {
+    outputs = { ... }: {
         editor = import ./modules/editor.nix;
         git = import ./modules/git.nix;
         oci = import ./modules/oci.nix;

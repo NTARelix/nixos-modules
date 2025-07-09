@@ -2,7 +2,7 @@
 # Configured via `./editor/init.lua`.
 # Run in any shell with `vi`, `vim`, or `nvim`.
 # Uses NixOS to install all plugins and language servers.
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 let
     tsgo = pkgs.buildGoModule {
         pname = "tsgo";

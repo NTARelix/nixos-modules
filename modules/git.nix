@@ -3,7 +3,7 @@
 # Configured almost completely from NixOS.
 # Remote repos may require stateful key management outside of the NixOS config.
 # I.e. `ssh-keygen` and `~/.ssh`.
-{ config, lib, pkgs, ... }:
+{ ... }:
 {
     programs.git = {
         enable = true;
