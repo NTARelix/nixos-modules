@@ -18,9 +18,9 @@
                 blink-cmp
                 vim-fugitive
                 gitsigns-nvim
+                lazydev-nvim
                 lualine-nvim
                 nightfox-nvim
-                nvim-lspconfig
                 nvim-tree-lua
                 nvim-treesitter-textobjects
                 nvim-treesitter.withAllGrammars
