@@ -46,6 +46,7 @@ in
     };
     environment.systemPackages = with pkgs; [
         lua-language-server
+        nil
         tsgo
         vue-language-server
     ];
