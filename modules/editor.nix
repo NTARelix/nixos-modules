@@ -3,6 +3,19 @@
 # Run in any shell with `vi`, `vim`, or `nvim`.
 # Uses NixOS to install all plugins and language servers.
 { config, lib, pkgs, ... }:
+let
+    tsgo = pkgs.buildGoModule {
+        pname = "tsgo";
+        version = "unstable-2025-07-07";
+        src = pkgs.fetchFromGitHub {
+            owner = "microsoft";
+            repo = "typescript-go";
+            rev = "742fcd2fcddf43cf3b68201538c783f2bf488ea3";
+            sha256 = "sha256-kOLZTSbb7MUbJgMS2Gag85mjwZntS1ZfUUT+K+NTRQQ=";
+        };
+        vendorHash = "sha256-9gZ1h/rsJ5DEcU8CJGKszE98GzZqfs2ELp1lbXsliYk=";
+    };
+in
 {
     programs.neovim = {
         enable = true;
@@ -33,8 +46,7 @@
     };
     environment.systemPackages = with pkgs; [
         lua-language-server
-        typescript-language-server
-        vtsls
+        tsgo
         vue-language-server
     ];
 }
