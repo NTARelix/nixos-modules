@@ -10,6 +10,10 @@ vim.lsp.config.nil_ls = {
     filetypes = { "nix" },
     root_markers = { "flake.nix", ".git" },
 }
-
-vim.lsp.enable({ "lua_ls", "nil_ls" })
+vim.lsp.config.tsgo_ls = {
+    cmd = { "tsgo", "--lsp", "--stdio" },
+    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+    root_markers = { "package.json", "tsconfig.json", ".git" },
+}
+vim.lsp.enable({ "lua_ls", "nil_ls", "tsgo_ls" })
 
