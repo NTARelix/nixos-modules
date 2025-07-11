@@ -78,7 +78,7 @@ map("n", "[c", function()
     if vim.wo.diff then
         vim.cmd.normal({"[c", bang = true})
     else
-        require("gitsigns").nav_hunk("next")
+        require("gitsigns").nav_hunk("prev")
     end
 end, "Next hunk")
 
