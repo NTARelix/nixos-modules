@@ -48,6 +48,7 @@ in
         lua-language-server
         nil
         tsgo
+        vtsls
         vue-language-server
     ];
 }
