@@ -26,7 +26,7 @@ local function get_nix_store_root(full_path)
 end
 vim.lsp.config.vts_ls = {
     cmd = { "vtsls", "--stdio" },
-    filetypes = {},
+    filetypes = { "vue" },
     settings = {
         vtsls = {
             tsserver = {
