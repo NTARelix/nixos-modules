@@ -1,2 +1,6 @@
-require("which-key").setup()
+require("which-key").setup({
+    win = {
+        border = "single",
+    },
+})
 
