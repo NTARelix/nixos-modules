@@ -34,6 +34,7 @@ in
                 lazydev-nvim
                 lualine-nvim
                 nightfox-nvim
+                none-ls-nvim
                 nvim-tree-lua
                 nvim-treesitter-textobjects
                 nvim-treesitter.withAllGrammars
@@ -45,11 +46,17 @@ in
         };
     };
     environment.systemPackages = with pkgs; [
+        dotenv-linter
+        hadolint
         lua-language-server
         nil
+        prettierd
+        statix
+        stylelint
         tsgo
         vtsls
         vue-language-server
+        yamllint
     ];
 }
 

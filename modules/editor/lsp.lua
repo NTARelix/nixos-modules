@@ -14,6 +14,11 @@ vim.lsp.config.tsgo_ls = {
     cmd = { "tsgo", "--lsp", "--stdio" },
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
     root_markers = { "package.json", "tsconfig.json", ".git" },
+    capabilities = vim.lsp.protocol.make_client_capabilities(),
+    on_init = function (client)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+    end,
 }
 local function get_nix_store_root(full_path)
     local pattern = "/nix/store/[a-z0-9%-\\.]+"
@@ -27,6 +32,11 @@ end
 vim.lsp.config.vts_ls = {
     cmd = { "vtsls", "--stdio" },
     filetypes = { "vue" },
+    capabilities = vim.lsp.protocol.make_client_capabilities(),
+    on_init = function (client)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+    end,
     settings = {
         vtsls = {
             tsserver = {
@@ -48,12 +58,15 @@ vim.lsp.config.vue_ls = {
     cmd = { "vue-language-server", "--stdio" },
     filestypes = { "vue" },
     root_markers = { "package.json", ".git" },
+    capabilities = vim.lsp.protocol.make_client_capabilities(),
     init_options = {
         typescript = {
             tsdk = get_nix_store_root(vim.loop.fs_realpath("/run/current-system/sw/bin/vtsls")) .. '/lib/vtsls-language-server/node_modules/typescript/lib/',
         },
     },
     on_init = function(client)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
         client.handlers["tsserver/request"] = function(_, result, context)
             local clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = "vts_ls" })
             if #clients == 0 then

@@ -19,6 +19,9 @@ end
 -- Modes
 map("n", "<leader>z", [[:NvimTreeToggle<cr>]], "Distraction free")
 
+require("which-key").add({ "<leader>d", group = "Diagnostics" })
+map("n", "<leader>ds", vim.diagnostic.open_float, "Show")
+
 require("which-key").add({ "<leader>f", group = "File" })
 map("n", "<leader>fo", [[<cmd>Telescope find_files<cr>]], "Open")
 map("n", "<leader>fO", [[<cmd>Telescope find_files follow=true no_ignore=true hidden=true<cr>]], "Open (all)")
