@@ -42,9 +42,7 @@ map("n", "<leader>lt", [[<cmd>Telescope lsp_type_definitions<cr>]], "Type Defini
 map("n", "<leader>li", [[<cmd>Telescope lsp_implementations<cr>]], "Implementation")
 map("n", "<leader>ln", vim.lsp.buf.rename, "Rename")
 map("n", "<leader>lr", [[<cmd>Telescope lsp_references<cr>]], "References")
-map("n", "K", function()
-    vim.lsp.buf.hover({ border = "single", max_height = 25, max_width = 120 })
-end, "LSP Hover")
+map("n", "K", vim.lsp.buf.hover, "LSP Hover")
 map("n", "<m-k>", vim.lsp.buf.signature_help, "LSP Hover Signature")
 
 require("which-key").add({ "<leader>g", group = "Git" })
