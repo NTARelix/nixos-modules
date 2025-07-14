@@ -76,14 +76,14 @@ map("n", "]c", function()
     else
         require("gitsigns").nav_hunk("next")
     end
-end, "Next hunk")
+end, "Next change")
 map("n", "[c", function()
     if vim.wo.diff then
         vim.cmd.normal({"[c", bang = true})
     else
         require("gitsigns").nav_hunk("prev")
     end
-end, "Next hunk")
+end, "Next change")
 
 -- Single-key mappings
 map("n", "<leader>?", [[<cmd>Telescope help_tags<cr>]], "Help")
