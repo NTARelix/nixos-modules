@@ -105,7 +105,7 @@ map("n", "<c-right>", [[<cmd>vertical resize +2<cr>]], "")
 map("n", "<tab>", [[:bn<cr>]], "Next buffer")
 map("n", "<s-tab>", [[:bp<cr>]], "Previous buffer")
 
--- Manipulation
+-- Text Manipulation
 map("v", "J", [[:m '>+1<CR>gv=gv]], "Swap ↓")
 map("v", "K", [[:m '<-2<CR>gv=gv]], "Swap ↑")
 map("n", "J", [[mzJ`z]], "Join")
