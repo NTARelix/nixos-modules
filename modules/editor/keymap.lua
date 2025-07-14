@@ -109,7 +109,7 @@ map("n", "<s-tab>", [[:bp<cr>]], "Previous buffer")
 map("v", "J", [[:m '>+1<CR>gv=gv]], "Swap ↓")
 map("v", "K", [[:m '<-2<CR>gv=gv]], "Swap ↑")
 map("n", "J", [[mzJ`z]], "Join")
-map({"n", "v"}, "<leader>d", [["_d]], "Delete")
+map("v", "<leader>d", [["_d]], "Delete")
 map("x", "<leader>p", [["_dP]], "Paste")
 
 -- Overwrite defaults
