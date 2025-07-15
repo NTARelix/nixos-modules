@@ -53,6 +53,7 @@ in
         prettierd
         statix
         stylelint
+        tailwindcss-language-server
         tsgo
         vtsls
         vue-language-server

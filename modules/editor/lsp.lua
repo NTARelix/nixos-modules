@@ -15,6 +15,39 @@ vim.lsp.config.nil_ls = {
         client.server_capabilities.documentRangeFormattingProvider = false
     end,
 }
+vim.lsp.config.tailwindcss_ls = {
+    cmd = { "tailwindcss-language-server", "--stdio" },
+    filetypes = {
+        "html",
+        "css",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue",
+    },
+    root_markers = { "package.json", ".git" },
+    settings = {
+        tailwindCSS = {
+            validate = true,
+            lint = {
+                cssConflict = 'warning',
+                invalidApply = 'error',
+                invalidScreen = 'error',
+                invalidVariant = 'error',
+                invalidConfigPath = 'error',
+                invalidTailwindDirective = 'error',
+                recommendedVariantOrder = 'warning',
+            },
+            classAttributes = {
+                'class',
+                'className',
+                'class:list',
+                'classList',
+            },
+        },
+    },
+}
 vim.lsp.config.tsgo_ls = {
     cmd = { "tsgo", "--lsp", "--stdio" },
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
@@ -34,6 +67,9 @@ local function get_nix_store_root(full_path)
         return nil
     end
 end
+local tsserver_path = get_nix_store_root(vim.loop.fs_realpath(
+        "/run/current-system/sw/bin/vue-language-server")) ..
+    "/lib/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
 vim.lsp.config.vts_ls = {
     cmd = { "vtsls", "--stdio" },
     filetypes = { "vue" },
@@ -50,9 +86,7 @@ vim.lsp.config.vts_ls = {
                     -- https://github.com/neovim/nvim-lspconfig/blob/ecb74c22b4a6c41162153f77e73d4ef645fedfa0/lsp/ts_ls.lua
                     {
                         name = "@vue/typescript-plugin",
-                        location = get_nix_store_root(vim.loop.fs_realpath(
-                        "/run/current-system/sw/bin/vue-language-server")) ..
-                        "/lib/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin",
+                        location = tsserver_path,
                         languages = { "vue" },
                         configNamespace = "typescript",
                     },
@@ -61,6 +95,8 @@ vim.lsp.config.vts_ls = {
         },
     },
 }
+local ts_path = get_nix_store_root(vim.loop.fs_realpath("/run/current-system/sw/bin/vtsls")) ..
+    '/lib/vtsls-language-server/node_modules/typescript/lib/'
 vim.lsp.config.vue_ls = {
     cmd = { "vue-language-server", "--stdio" },
     filestypes = { "vue" },
@@ -68,8 +104,7 @@ vim.lsp.config.vue_ls = {
     capabilities = vim.lsp.protocol.make_client_capabilities(),
     init_options = {
         typescript = {
-            tsdk = get_nix_store_root(vim.loop.fs_realpath("/run/current-system/sw/bin/vtsls")) ..
-            '/lib/vtsls-language-server/node_modules/typescript/lib/',
+            tsdk = ts_path,
         },
     },
     on_init = function(client)
@@ -102,4 +137,11 @@ vim.lsp.config.vue_ls = {
         end
     end,
 }
-vim.lsp.enable({ "lua_ls", "nil_ls", "tsgo_ls", "vts_ls", "vue_ls" })
+vim.lsp.enable({
+    "lua_ls",
+    "nil_ls",
+    "tailwindcss_ls",
+    "tsgo_ls",
+    "vts_ls",
+    "vue_ls",
+})
