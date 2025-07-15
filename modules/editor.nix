@@ -10,8 +10,8 @@ let
         src = pkgs.fetchFromGitHub {
             owner = "microsoft";
             repo = "typescript-go";
-            rev = "2b82831a05b6b99da279d12fecbcbc460574a85b";
-            sha256 = "sha256-psDVrF3NNeL+Y6dM6kjDKX+ThIysnzJkxDQjKvAs/9M=";
+            rev = "f9ca2a1d8ee34a19f21b909d1164c7b52a8f17c3";
+            sha256 = "sha256-kzHz+zUiPc2NgI5olgu0pyBnfUVk2+k9fB882ny+mpw=";
         };
         vendorHash = "sha256-9gZ1h/rsJ5DEcU8CJGKszE98GzZqfs2ELp1lbXsliYk=";
     };
