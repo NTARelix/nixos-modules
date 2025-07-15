@@ -9,13 +9,18 @@ vim.lsp.config.nil_ls = {
     cmd = { "nil" },
     filetypes = { "nix" },
     root_markers = { "flake.nix", ".git" },
+    capabilities = vim.lsp.protocol.make_client_capabilities(),
+    on_init = function(client)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+    end,
 }
 vim.lsp.config.tsgo_ls = {
     cmd = { "tsgo", "--lsp", "--stdio" },
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
     root_markers = { "package.json", "tsconfig.json", ".git" },
     capabilities = vim.lsp.protocol.make_client_capabilities(),
-    on_init = function (client)
+    on_init = function(client)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
     end,
@@ -33,7 +38,7 @@ vim.lsp.config.vts_ls = {
     cmd = { "vtsls", "--stdio" },
     filetypes = { "vue" },
     capabilities = vim.lsp.protocol.make_client_capabilities(),
-    on_init = function (client)
+    on_init = function(client)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
     end,
@@ -45,7 +50,9 @@ vim.lsp.config.vts_ls = {
                     -- https://github.com/neovim/nvim-lspconfig/blob/ecb74c22b4a6c41162153f77e73d4ef645fedfa0/lsp/ts_ls.lua
                     {
                         name = "@vue/typescript-plugin",
-                        location = get_nix_store_root(vim.loop.fs_realpath("/run/current-system/sw/bin/vue-language-server")) .. "/lib/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin",
+                        location = get_nix_store_root(vim.loop.fs_realpath(
+                        "/run/current-system/sw/bin/vue-language-server")) ..
+                        "/lib/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin",
                         languages = { "vue" },
                         configNamespace = "typescript",
                     },
@@ -61,7 +68,8 @@ vim.lsp.config.vue_ls = {
     capabilities = vim.lsp.protocol.make_client_capabilities(),
     init_options = {
         typescript = {
-            tsdk = get_nix_store_root(vim.loop.fs_realpath("/run/current-system/sw/bin/vtsls")) .. '/lib/vtsls-language-server/node_modules/typescript/lib/',
+            tsdk = get_nix_store_root(vim.loop.fs_realpath("/run/current-system/sw/bin/vtsls")) ..
+            '/lib/vtsls-language-server/node_modules/typescript/lib/',
         },
     },
     on_init = function(client)
@@ -95,4 +103,3 @@ vim.lsp.config.vue_ls = {
     end,
 }
 vim.lsp.enable({ "lua_ls", "nil_ls", "tsgo_ls", "vts_ls", "vue_ls" })
-
