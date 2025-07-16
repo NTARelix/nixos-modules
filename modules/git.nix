@@ -13,6 +13,7 @@
             diff.algorithm = "patience";
             merge.conflictStyle = "diff3";
             merge.ff = "only";
+            pull.rebase = true;
             push.autoSetupRemote = true;
             user.name = "Kevin Koshiol";
         };
