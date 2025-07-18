@@ -54,7 +54,7 @@ in
         statix
         stylelint
         tailwindcss-language-server
-        tsgo
+        # tsgo
         vtsls
         vue-language-server
         yamllint

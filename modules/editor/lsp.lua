@@ -48,16 +48,16 @@ vim.lsp.config.tailwindcss_ls = {
         },
     },
 }
-vim.lsp.config.tsgo_ls = {
-    cmd = { "tsgo", "--lsp", "--stdio" },
-    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-    root_markers = { "package.json", "tsconfig.json", ".git" },
-    capabilities = vim.lsp.protocol.make_client_capabilities(),
-    on_init = function(client)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
-    end,
-}
+-- vim.lsp.config.tsgo_ls = {
+--     cmd = { "tsgo", "--lsp", "--stdio" },
+--     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+--     root_markers = { "package.json", "tsconfig.json", ".git" },
+--     capabilities = vim.lsp.protocol.make_client_capabilities(),
+--     on_init = function(client)
+--         client.server_capabilities.documentFormattingProvider = false
+--         client.server_capabilities.documentRangeFormattingProvider = false
+--     end,
+-- }
 local function get_nix_store_root(full_path)
     local pattern = "/nix/store/[a-z0-9%-\\.]+"
     local start_idx, end_idx = string.find(full_path, pattern)
@@ -72,7 +72,8 @@ local tsserver_path = get_nix_store_root(vim.loop.fs_realpath(
     "/lib/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
 vim.lsp.config.vts_ls = {
     cmd = { "vtsls", "--stdio" },
-    filetypes = { "vue" },
+    -- filetypes = { "vue" },
+    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
     capabilities = vim.lsp.protocol.make_client_capabilities(),
     on_init = function(client)
         client.server_capabilities.documentFormattingProvider = false
