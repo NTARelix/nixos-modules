@@ -1,5 +1,16 @@
-vim.lsp.set_log_level("debug")
 require("lazydev").setup()
+
+vim.lsp.config.css_ls = {
+    cmd = { 'vscode-css-language-server', '--stdio' },
+    filetypes = { 'css', 'scss', 'less' },
+    init_options = { provideFormatter = false }, -- needed to enable formatting capabilities
+    root_markers = { 'package.json', '.git' },
+    settings = {
+        css = { validate = true },
+        scss = { validate = true },
+        less = { validate = true },
+    },
+}
 vim.lsp.config.lua_ls = {
     cmd = { "lua-language-server" },
     filetypes = { "lua" },

@@ -55,6 +55,7 @@ in
         stylelint
         tailwindcss-language-server
         # tsgo
+        vscode-langservers-extracted
         vtsls
         vue-language-server
         yamllint
