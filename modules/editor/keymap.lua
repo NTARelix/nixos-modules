@@ -1,5 +1,6 @@
 -- Leader
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 
 -- Helpers
 
@@ -32,6 +33,7 @@ map("n", "<leader><leader>", [[:so %<CR>]], "Source")
 
 require("which-key").add({ "<leader>t", group = "Text" })
 map("n", "<leader>ts", [[<cmd>Telescope live_grep<cr>]], "Search")
+map("v", "<leader>tr", require("grug-far").open, "Replace")
 map("n", "<leader>tr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Replace")
 
 require("which-key").add({ "<leader>b", group = "Buffer" })
@@ -73,14 +75,14 @@ map("n", "<leader>hp", require("gitsigns").preview_hunk, "Preview")
 map("n", "<leader>hd", require("gitsigns").diffthis, "Diff")
 map("n", "]c", function()
     if vim.wo.diff then
-        vim.cmd.normal({"]c", bang = true})
+        vim.cmd.normal({ "]c", bang = true })
     else
         require("gitsigns").nav_hunk("next")
     end
 end, "Next change")
 map("n", "[c", function()
     if vim.wo.diff then
-        vim.cmd.normal({"[c", bang = true})
+        vim.cmd.normal({ "[c", bang = true })
     else
         require("gitsigns").nav_hunk("prev")
     end
@@ -121,4 +123,3 @@ map("n", "N", [[Nzzzv]], "Prev")
 map("v", ">", [[>gv]], "Indent")
 map("v", "<", [[<gv]], "Dedent")
 vim.keymap.del("x", "Q")
-

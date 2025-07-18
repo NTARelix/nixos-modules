@@ -29,8 +29,8 @@ in
             '';
             packages.myVimPackages.start = with pkgs.vimPlugins; [
                 blink-cmp
-                vim-fugitive
                 gitsigns-nvim
+                grug-far-nvim
                 lazydev-nvim
                 lualine-nvim
                 nightfox-nvim
@@ -40,6 +40,7 @@ in
                 nvim-treesitter.withAllGrammars
                 nvim-web-devicons
                 telescope-nvim
+                vim-fugitive
                 vim-visual-multi
                 which-key-nvim
             ];
