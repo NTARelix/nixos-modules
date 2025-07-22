@@ -240,7 +240,7 @@ vim.lsp.enable({
     "lua_ls",
     "nil_ls",
     "tailwindcss_ls",
-    "tsgo_ls",
+    -- "tsgo_ls",
     "vts_ls",
     "vue_ls",
 })
