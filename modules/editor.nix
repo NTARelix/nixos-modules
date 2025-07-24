@@ -29,6 +29,7 @@ in
             '';
             packages.myVimPackages.start = with pkgs.vimPlugins; [
                 blink-cmp
+                fidget-nvim
                 gitsigns-nvim
                 grug-far-nvim
                 lazydev-nvim
