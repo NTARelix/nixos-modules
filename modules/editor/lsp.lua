@@ -142,6 +142,13 @@ vim.lsp.config.tailwindcss_ls = {
                 'class:list',
                 'classList',
             },
+            classFunctions = {
+                "clsx",
+                "cn",
+                "cva",
+                "tw",
+                "tw\\.[a-z-]+",
+            },
         },
     },
 }
