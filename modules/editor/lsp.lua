@@ -179,6 +179,30 @@ vim.lsp.config.vts_ls = {
     -- filetypes = { "vue" },
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
     capabilities = vim.lsp.protocol.make_client_capabilities(),
+    on_attach = function(client, bufnr)
+        local function goto_source_definition()
+            local position_params = vim.lsp.util.make_position_params(0, "utf-8")
+            client:exec_cmd(
+                {
+                    title = "Go to source definition",
+                    command = "typescript.goToSourceDefinition",
+                    arguments = { vim.uri_from_bufnr(bufnr), position_params.position },
+                },
+                { buffer = bufnr },
+                function(error, result)
+                    if error then
+                        print("error:", error)
+                    elseif result then
+                        -- print("results:", vim.inspect(result))
+                        vim.lsp.util.show_document(result[1], "utf-8", { focus = true, reuse_win = true })
+                    else
+                        print("no error and no result!")
+                    end
+                end
+            )
+        end
+        vim.keymap.set("n", "<leader>ls", goto_source_definition, { desc = "Go to source definition", buffer = bufnr })
+    end,
     on_init = function(client)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
