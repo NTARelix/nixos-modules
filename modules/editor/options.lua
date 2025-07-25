@@ -17,7 +17,6 @@ vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "120"
 vim.opt.winblend = 0
-vim.opt.winborder = "single"
 vim.opt.listchars = {
     tab = "»·",
     multispace = "·",
@@ -26,11 +25,14 @@ vim.opt.listchars = {
     trail = "·",
     nbsp = "⍽",
 }
+local bg_color = "#0c0c0c"
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = bg_color })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = bg_color })
 local function update_lead()
     local lc = vim.opt_local.listchars:get()
     local lms = vim.fn.str2list(lc.leadmultispace)
     local space = vim.fn.str2list(lc.multispace)
-    local lead = {lms[1]}
+    local lead = { lms[1] }
     for i = 1, vim.bo.tabstop - 1 do
         lead[#lead + 1] = space[i % #space + 1]
     end
@@ -39,4 +41,3 @@ end
 vim.api.nvim_create_autocmd("OptionSet", { pattern = { "listchars", "tabstop", "filetype" }, callback = update_lead })
 vim.api.nvim_create_autocmd("BufEnter", { callback = update_lead })
 vim.api.nvim_create_autocmd("VimEnter", { callback = update_lead, once = true })
-

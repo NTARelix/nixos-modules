@@ -1,3 +1,6 @@
+-- Locals
+local border = "rounded"
+
 -- Leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
@@ -47,7 +50,20 @@ map("n", "<leader>lt", [[<cmd>Telescope lsp_type_definitions<cr>]], "Type Defini
 map("n", "<leader>li", [[<cmd>Telescope lsp_implementations<cr>]], "Implementation")
 map("n", "<leader>ln", vim.lsp.buf.rename, "Rename")
 map("n", "<leader>lr", [[<cmd>Telescope lsp_references<cr>]], "References")
-map("n", "K", vim.lsp.buf.hover, "LSP Hover")
+map("n", "K", function()
+    local base_win_id = vim.api.nvim_get_current_win()
+    local windows = vim.api.nvim_tabpage_list_wins(0)
+    for _, win_id in ipairs(windows) do
+        if win_id ~= base_win_id then
+            local win_cfg = vim.api.nvim_win_get_config(win_id)
+            if win_cfg.relative == "win" and win_cfg.win == base_win_id then
+                vim.api.nvim_win_close(win_id, {})
+                return
+            end
+        end
+    end
+    vim.lsp.buf.hover({ border = border })
+end, "Toggle LSP Hover")
 map("n", "<m-k>", vim.lsp.buf.signature_help, "LSP Hover Signature")
 
 require("which-key").add({ "<leader>g", group = "Git" })
