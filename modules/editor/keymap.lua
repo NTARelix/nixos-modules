@@ -34,11 +34,6 @@ map("n", "<C-s>", [[:w<cr>]], "Save")
 map("i", "<C-s>", [[<esc>:w<cr>gi]], "Save")
 map("n", "<leader><leader>", [[:so %<CR>]], "Source")
 
-require("which-key").add({ "<leader>t", group = "Text" })
-map("n", "<leader>ts", [[<cmd>Telescope live_grep<cr>]], "Search")
-map("v", "<leader>tr", require("grug-far").open, "Replace")
-map("n", "<leader>tr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Replace")
-
 require("which-key").add({ "<leader>b", group = "Buffer" })
 map("n", "<leader>bf", vim.lsp.buf.format, "Format")
 map("n", "<leader>bs", [[<cmd>Telescope buffers<cr>]], "Search")
@@ -67,12 +62,10 @@ end, "Toggle LSP Hover")
 map("n", "<m-k>", vim.lsp.buf.signature_help, "LSP Hover Signature")
 
 require("which-key").add({ "<leader>g", group = "Git" })
-map("n", "<leader>gs", [[<cmd>Telescope git_status<cr>]], "Status")
-map("n", "<leader>gb", [[<cmd>Telescope git_branches<cr>]], "Branch")
-map("n", "<leader>gh", [[<cmd>Telescope git_stash<cr>]], "Stash")
-map("n", "<leader>gl", [[<cmd>Telescope git_commits<cr>]], "Log")
-map("n", "<leader>gc", [[:Git commit<cr>]], "Commit")
-map("n", "<leader>gr", [[:Git rebase -i<cr>]], "Rebase")
+map("n", "<leader>gs", require("telescope.builtin").git_status, "Status")
+map("n", "<leader>gb", require("telescope.builtin").git_branches, "Branch")
+map("n", "<leader>gh", require("telescope.builtin").git_stash, "Stash")
+map("n", "<leader>gl", require("telescope.builtin").git_commits, "Log")
 map("n", "<leader>gp", [[:Git pull<cr>]], "Pull")
 map("n", "<leader>gP", [[:Git push<cr>]], "Push")
 
@@ -104,8 +97,21 @@ map("n", "[c", function()
     end
 end, "Next change")
 
+require("which-key").add({ "<leader>t", group = "Text" })
+map("n", "<leader>ts", function()
+    require("telescope.builtin").live_grep({ border = border })
+end, "Search")
+map("n", "<leader>tr", function()
+    require("grug-far").open({
+        transient = true,
+        prefills = {
+            search = vim.fn.expand("<cword>"),
+        },
+    })
+end, "Replace")
+
 -- Single-key mappings
-map("n", "<leader>?", [[<cmd>Telescope help_tags<cr>]], "Help")
+map("n", "<leader>?", require("telescope.builtin").help_tags, "Help")
 map("n", "<leader>q", [[:wqa<cr>]], "Help")
 
 -- Window movement
