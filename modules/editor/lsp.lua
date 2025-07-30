@@ -228,7 +228,7 @@ local ts_path = get_nix_store_root(vim.loop.fs_realpath("/run/current-system/sw/
     '/lib/vtsls-language-server/node_modules/typescript/lib/'
 vim.lsp.config.vue_ls = {
     cmd = { "vue-language-server", "--stdio" },
-    filestypes = { "vue" },
+    filetypes = { "vue" },
     root_markers = { "package.json", ".git" },
     capabilities = vim.lsp.protocol.make_client_capabilities(),
     init_options = {
