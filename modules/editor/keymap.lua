@@ -24,7 +24,9 @@ end
 map("n", "<leader>z", [[:NvimTreeToggle<cr>]], "Distraction free")
 
 require("which-key").add({ "<leader>d", group = "Diagnostics" })
-map("n", "<leader>ds", vim.diagnostic.open_float, "Show")
+map("n", "<leader>ds", function()
+    vim.diagnostic.open_float({ border = border })
+end, "Show")
 
 require("which-key").add({ "<leader>f", group = "File" })
 map("n", "<leader>fo", [[<cmd>Telescope find_files<cr>]], "Open")
@@ -98,9 +100,7 @@ map("n", "[c", function()
 end, "Next change")
 
 require("which-key").add({ "<leader>t", group = "Text" })
-map("n", "<leader>ts", function()
-    require("telescope.builtin").live_grep({ border = border })
-end, "Search")
+map("n", "<leader>ts", require("telescope.builtin").live_grep, "Search")
 map("n", "<leader>tr", function()
     require("grug-far").open({
         transient = true,
