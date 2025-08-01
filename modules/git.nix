@@ -8,6 +8,7 @@
     programs.git = {
         enable = true;
         config = {
+            alias.amend = "commit --amend --no-edit --reset-author";
             core.excludesFile = "~/.gitignore";
             core.pager = "less -FX";
             diff.algorithm = "patience";
