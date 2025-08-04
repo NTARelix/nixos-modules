@@ -35,6 +35,7 @@ in
                 grug-far-nvim
                 lazydev-nvim
                 lualine-nvim
+                nvim-lspconfig
                 nightfox-nvim
                 none-ls-nvim
                 nvim-tree-lua

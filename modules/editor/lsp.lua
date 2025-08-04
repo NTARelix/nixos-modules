@@ -173,7 +173,7 @@ local function get_nix_store_root(full_path)
 end
 local tsserver_path = get_nix_store_root(vim.loop.fs_realpath(
         "/run/current-system/sw/bin/vue-language-server")) ..
-    "/lib/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
+    "/lib/language-tools/packages/language-server"
 vim.lsp.config.vts_ls = {
     cmd = { "vtsls", "--stdio" },
     -- filetypes = { "vue" },
