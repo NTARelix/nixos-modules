@@ -1,4 +1,4 @@
-# The primary shell: Oh My Zsh (https://ohmyz.sh/).
+# The primary shell.
 # Makes terminal use much friendlier than most defaults.
 # RECOMMENDED: configure your terminal to use a particular font as specified by p10k:
 #    https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#fonts
@@ -13,7 +13,7 @@
         fzf
         ripgrep
     ];
-    
+
     # Direnv
     programs.direnv = {
         enable = true;
@@ -23,7 +23,7 @@
     nix.extraOptions = ''
         trusted-users = root nixos
     '';
-    
+
     # Shell
     users.extraUsers.nixos.shell = pkgs.zsh;
     programs.zsh = {
@@ -36,8 +36,6 @@
         interactiveShellInit = ''
             source ${pkgs.fzf}/share/fzf/key-bindings.zsh
             source ${pkgs.fzf}/share/fzf/completion.zsh
-            source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-            source ${./shell/p10k.zsh}
         '';
         ohMyZsh = {
             enable = true;
@@ -57,5 +55,8 @@
             ];
         };
     };
+
+    # Prompt
+    programs.starship.enable = true;
 }
 
