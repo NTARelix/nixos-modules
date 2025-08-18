@@ -1,4 +1,10 @@
 require("nvim-tree").setup({
+    hijack_cursor = true,
+    renderer = {
+        indent_markers = {
+            enable = true,
+        },
+    },
     update_focused_file = {
         enable = true,
     },
