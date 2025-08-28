@@ -34,6 +34,7 @@
         histSize = 100000;
         histFile = "$HOME/.zsh_history";
         interactiveShellInit = ''
+            source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
             source ${pkgs.fzf}/share/fzf/key-bindings.zsh
             source ${pkgs.fzf}/share/fzf/completion.zsh
         '';
