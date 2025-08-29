@@ -19,6 +19,7 @@ in
         fzf
         nodejs_24
         ripgrep
+        opentofu
     ];
 
     # Direnv
