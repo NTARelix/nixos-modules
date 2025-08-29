@@ -11,6 +11,7 @@
     environment.systemPackages = with pkgs; [
         devenv
         fzf
+        nodejs_24
         ripgrep
     ];
 
