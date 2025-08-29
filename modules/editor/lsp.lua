@@ -271,6 +271,7 @@ vim.lsp.enable({
     "lua_ls",
     "nil_ls",
     "tailwindcss_ls",
+    "terraformls",
     -- "tsgo_ls",
     "vts_ls",
     "vue_ls",

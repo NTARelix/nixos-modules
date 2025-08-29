@@ -58,6 +58,7 @@ in
         statix
         stylelint
         tailwindcss-language-server
+        terraform-ls
         # tsgo
         vscode-langservers-extracted
         vtsls
