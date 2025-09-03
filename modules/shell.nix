@@ -14,7 +14,7 @@ in
 {
     # Packages
     environment.systemPackages = with pkgs; [
-        oldPkgs.azure-cli # oldPkgs because https://github.com/NixOS/nixpkgs/issues/437525
+        (oldPkgs.azure-cli.withExtensions [oldPkgs.azure-cli.extensions.containerapp]) # oldPkgs because https://github.com/NixOS/nixpkgs/issues/437525
         devenv
         fzf
         nodejs_24
