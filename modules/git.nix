@@ -9,6 +9,8 @@
         enable = true;
         config = {
             alias.amend = "commit --amend --no-edit --reset-author";
+            alias.stauts = "status";
+            alias.statsu = "status";
             core.excludesFile = "~/.gitignore";
             core.pager = "less -FX";
             diff.algorithm = "patience";
