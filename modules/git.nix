@@ -9,6 +9,7 @@
         enable = true;
         config = {
             alias.amend = "commit --amend --no-edit --reset-author";
+            alias.reup = "!git stash -u && git fetch origin main:main && git rebase main && git stash pop";
             alias.stauts = "status";
             alias.statsu = "status";
             core.excludesFile = "~/.gitignore";
