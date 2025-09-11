@@ -42,6 +42,7 @@ map("n", "<leader>bs", [[<cmd>Telescope buffers<cr>]], "Search")
 map("n", "<leader>bd", [[<cmd>bprev | bdelete #<cr>]], "Delete")
 
 require("which-key").add({ "<leader>l", group = "LSP" })
+map("n", "<leader>la", vim.lsp.buf.code_action, "Action")
 map("n", "<leader>ld", [[<cmd>Telescope lsp_definitions<cr>]], "Definition(s)")
 map("n", "<leader>lt", [[<cmd>Telescope lsp_type_definitions<cr>]], "Type Definition(s)")
 map("n", "<leader>li", [[<cmd>Telescope lsp_implementations<cr>]], "Implementation")
