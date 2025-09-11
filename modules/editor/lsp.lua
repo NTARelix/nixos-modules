@@ -95,6 +95,9 @@ vim.lsp.config.eslint_ls = {
             vim.notify("[lsp] Unable to find ESLint library.", vim.log.levels.WARN)
             return {}
         end,
+        ["textDocument/formatting"] = function(_, result, ctx, config)
+            vim.api.nvim_command("LspEslintFixAll")
+        end,
     },
 }
 vim.lsp.config.lua_ls = {
