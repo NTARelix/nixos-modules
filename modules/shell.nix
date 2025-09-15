@@ -5,7 +5,7 @@
 # Configured here with NixOS, as well as a generated p10k theme config in `./shell/p10k.zsh`.
 # Also adds tools for command-line convenience.
 # All plugins are managed here with NixOS.
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 let
     oldPkgs = import (builtins.fetchTarball {
         url = "https://github.com/NixOS/nixpkgs/archive/42b35e98c168781a208b31b5095bdb0f336b410a.tar.gz";
@@ -14,12 +14,19 @@ in
 {
     # Packages
     environment.systemPackages = with pkgs; [
-        (oldPkgs.azure-cli.withExtensions [oldPkgs.azure-cli.extensions.containerapp]) # oldPkgs because https://github.com/NixOS/nixpkgs/issues/437525
+        # oldPkgs because https://github.com/NixOS/nixpkgs/issues/437525
+        (oldPkgs.azure-cli.withExtensions [
+            oldPkgs.azure-cli.extensions.containerapp
+            oldPkgs.azure-cli.extensions.log-analytics
+        ])
         devenv
         fzf
         nodejs_24
         ripgrep
-        opentofu
+        terraform
+    ];
+    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "terraform"
     ];
 
     # Direnv
