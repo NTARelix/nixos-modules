@@ -270,6 +270,7 @@ vim.lsp.config.vue_ls = {
     end,
 }
 vim.lsp.enable({
+    "bashls",
     "eslint_ls",
     "lua_ls",
     "nil_ls",

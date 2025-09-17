@@ -50,6 +50,7 @@ in
         };
     };
     environment.systemPackages = with pkgs; [
+        bash-language-server
         dotenv-linter
         hadolint
         lua-language-server
