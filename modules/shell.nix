@@ -19,7 +19,7 @@ in
             oldPkgs.azure-cli.extensions.containerapp
             oldPkgs.azure-cli.extensions.log-analytics
         ])
-        devenv
+        # devenv
         fzf
         nodejs_24
         ripgrep
@@ -30,11 +30,11 @@ in
     ];
 
     # Direnv
-    programs.direnv = {
-        enable = true;
-        enableZshIntegration = true;
-        nix-direnv.enable = true;
-    };
+    # programs.direnv = {
+    #     enable = true;
+    #     enableZshIntegration = true;
+    #     nix-direnv.enable = true;
+    # };
     nix.extraOptions = ''
         trusted-users = root nixos
     '';
