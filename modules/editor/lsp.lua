@@ -100,6 +100,14 @@ vim.lsp.config.eslint_ls = {
         end,
     },
 }
+require("lspconfig").jsonls.setup({
+    settings = {
+        json = {
+            schemas = require("schemastore").json.schemas(),
+            validate = { enable = true },
+        },
+    },
+})
 vim.lsp.config.lua_ls = {
     cmd = { "lua-language-server" },
     filetypes = { "lua" },
@@ -272,6 +280,7 @@ vim.lsp.config.vue_ls = {
 vim.lsp.enable({
     "bashls",
     "eslint_ls",
+    "jsonls",
     "lua_ls",
     "nil_ls",
     "tailwindcss_ls",
