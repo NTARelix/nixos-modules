@@ -29,6 +29,8 @@ A collection of configuration modules for [NixOS].
             # shared-modules.git
             # shared-modules.shell
             # shared-modules.oci
+            # shared-modules.azure-cli
+            # shared-modules.terraform-cli
         ];
     }
     ```
