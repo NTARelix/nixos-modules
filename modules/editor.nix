@@ -24,8 +24,8 @@ in
         defaultEditor = true;
         configure = {
             customRC = ''
-                lua package.path = "/etc/nixos-modules-flake/modules/editor/?.lua;" .. package.path
-                lua dofile('/etc/nixos-modules-flake/modules/editor/init.lua')
+                lua package.path = "/etc/nixos-modules/modules/editor/?.lua;" .. package.path
+                lua dofile('/etc/nixos-modules/modules/editor/init.lua')
             '';
             packages.myVimPackages.start = with pkgs.vimPlugins; [
                 blink-cmp
