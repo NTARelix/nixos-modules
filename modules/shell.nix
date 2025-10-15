@@ -9,18 +9,18 @@
 {
     # Packages
     environment.systemPackages = with pkgs; [
-        # devenv
+        devenv
         fzf
         nodejs_24
         ripgrep
     ];
 
     # Direnv
-    # programs.direnv = {
-    #     enable = true;
-    #     enableZshIntegration = true;
-    #     nix-direnv.enable = true;
-    # };
+    programs.direnv = {
+        enable = true;
+        enableZshIntegration = true;
+        nix-direnv.enable = true;
+    };
     nix.extraOptions = ''
         trusted-users = root nixos
     '';
