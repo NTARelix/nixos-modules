@@ -13,6 +13,7 @@
         fzf
         nodejs_24
         ripgrep
+        unzip
     ];
 
     # Direnv
