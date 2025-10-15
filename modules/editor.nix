@@ -32,7 +32,7 @@ in
                 bufferline-nvim
                 fidget-nvim
                 gitsigns-nvim
-                grug-far-nvim
+                # grug-far-nvim
                 lazydev-nvim
                 lualine-nvim
                 nvim-lspconfig

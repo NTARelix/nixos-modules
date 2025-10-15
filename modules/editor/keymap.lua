@@ -102,14 +102,14 @@ end, "Next change")
 
 require("which-key").add({ "<leader>t", group = "Text" })
 map("n", "<leader>ts", require("telescope.builtin").live_grep, "Search")
-map("n", "<leader>tr", function()
-    require("grug-far").open({
-        transient = true,
-        prefills = {
-            search = vim.fn.expand("<cword>"),
-        },
-    })
-end, "Replace")
+-- map("n", "<leader>tr", function()
+--     require("grug-far").open({
+--         transient = true,
+--         prefills = {
+--             search = vim.fn.expand("<cword>"),
+--         },
+--     })
+-- end, "Replace")
 
 -- Single-key mappings
 map("n", "<leader>?", require("telescope.builtin").help_tags, "Help")
