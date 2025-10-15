@@ -11,6 +11,7 @@ in
         (oldPkgs.azure-cli.withExtensions [
             oldPkgs.azure-cli.extensions.containerapp
             oldPkgs.azure-cli.extensions.log-analytics
+            oldPkgs.azure-cli.extensions.rdbms-connect
         ])
     ];
 }
