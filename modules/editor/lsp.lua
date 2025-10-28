@@ -1,4 +1,4 @@
-vim.lsp.set_log_level("DEBUG")
+-- vim.lsp.set_log_level("DEBUG")
 require("lazydev").setup()
 
 vim.lsp.config('cssls', {
