@@ -12,6 +12,13 @@ require("lspconfig").jsonls.setup({
         },
     },
 })
+vim.lsp.config('tailwindcss', {
+    settings = {
+        tailwindCSS = {
+            classFunctions = { "cva", "cx", "cn" },
+        },
+    },
+})
 local function get_nix_store_root(full_path)
     local pattern = "/nix/store/[a-z0-9%-\\.]+"
     local start_idx, end_idx = string.find(full_path, pattern)
