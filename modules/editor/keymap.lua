@@ -49,6 +49,7 @@ map("n", "<leader>lt", [[<cmd>Telescope lsp_type_definitions<cr>]], "Type Defini
 map("n", "<leader>li", [[<cmd>Telescope lsp_implementations<cr>]], "Implementation")
 map("n", "<leader>ln", vim.lsp.buf.rename, "Rename")
 map("n", "<leader>lr", [[<cmd>Telescope lsp_references<cr>]], "References")
+map("n", "<leader>ls", [[<cmd>Telescope lsp_symbols<cr>]], "Symbols")
 map("n", "K", function()
     local base_win_id = vim.api.nvim_get_current_win()
     local windows = vim.api.nvim_tabpage_list_wins(0)
