@@ -27,6 +27,7 @@ require("which-key").add({ "<leader>d", group = "Diagnostics" })
 map("n", "<leader>ds", function()
     vim.diagnostic.open_float({ border = border })
 end, "Show")
+map("n", "<leader>dl", [[<cmd>Telescope diagnostics<cr>]], "List")
 
 require("which-key").add({ "<leader>f", group = "File" })
 map("n", "<leader>fo", [[<cmd>Telescope find_files<cr>]], "Open")
