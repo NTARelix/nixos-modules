@@ -40,6 +40,7 @@ require("which-key").add({ "<leader>b", group = "Buffer" })
 map("n", "<leader>bf", vim.lsp.buf.format, "Format")
 map("n", "<leader>bs", [[<cmd>Telescope buffers<cr>]], "Search")
 map("n", "<leader>bd", [[<cmd>bprev | bdelete #<cr>]], "Delete")
+map("n", "<leader>br", [[<cmd>edit!<cr>]], "Reload")
 
 require("which-key").add({ "<leader>l", group = "LSP" })
 map("n", "<leader>la", vim.lsp.buf.code_action, "Action")
