@@ -4,7 +4,7 @@ require("lazydev").setup()
 vim.lsp.config('cssls', {
     init_options = { provideFormatter = false }, -- needed to enable formatting capabilities
 })
-require("lspconfig").jsonls.setup({
+vim.lsp.config('jsonls', {
     settings = {
         json = {
             schemas = require("schemastore").json.schemas(),
