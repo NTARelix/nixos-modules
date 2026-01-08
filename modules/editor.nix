@@ -38,7 +38,7 @@ in
                 nightfox-nvim
                 none-ls-nvim
                 nvim-tree-lua
-                nvim-treesitter-textobjects
+                # nvim-treesitter-textobjects # temporarily disabled because it causes nixos-rebuild to fail
                 nvim-treesitter.withAllGrammars
                 nvim-web-devicons
                 SchemaStore-nvim
