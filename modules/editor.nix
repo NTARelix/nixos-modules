@@ -34,6 +34,7 @@ in
                 gitsigns-nvim
                 lazydev-nvim
                 lualine-nvim
+                markdown-preview-nvim
                 nvim-lspconfig
                 nightfox-nvim
                 none-ls-nvim
