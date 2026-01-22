@@ -7,7 +7,6 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.wrap = true
 vim.opt.cursorline = true
-vim.opt.scrolloff = 8
 vim.opt.clipboard = "unnamedplus"
 vim.opt.mouse = "a"
 vim.opt.hidden = true
