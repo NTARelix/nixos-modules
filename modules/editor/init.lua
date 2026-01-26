@@ -1,4 +1,6 @@
-require("autocmds")
+require("autocmd-format-on-save")
+require("autocmd-generate-plantuml-img")
+require("autocmd-task-ui")
 require("colorscheme")
 require("keymap")
 require("lsp")
