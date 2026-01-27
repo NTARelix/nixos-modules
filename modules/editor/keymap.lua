@@ -113,6 +113,18 @@ map("n", "<leader>ts", require("telescope.builtin").live_grep, "Search")
 --     })
 -- end, "Replace")
 
+require("which-key").add({ "<leader>c", group = "Companion" })
+map("n", "<leader>cc", function()
+    require("codecompanion").toggle({
+        window_opts = {
+            layout = "vertical",
+            position = "right",
+            width = 0.33,
+        },
+    })
+end, "Chat (toggle)")
+map("n", "<leader>ca", [[:CodeCompanionActions<cr>]], "Actions")
+
 -- Single-key mappings
 map("n", "<leader>?", require("telescope.builtin").help_tags, "Help")
 map("n", "<leader>q", [[:wqa<cr>]], "Help")

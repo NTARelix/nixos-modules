@@ -30,6 +30,8 @@ in
             packages.myVimPackages.start = with pkgs.vimPlugins; [
                 blink-cmp
                 bufferline-nvim
+                codecompanion-nvim
+                codecompanion-spinner-nvim
                 fidget-nvim
                 gitsigns-nvim
                 lazydev-nvim
@@ -68,4 +70,3 @@ in
         yamllint
     ];
 }
-
