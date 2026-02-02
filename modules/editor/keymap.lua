@@ -127,7 +127,7 @@ map("n", "<leader>ca", [[:CodeCompanionActions<cr>]], "Actions")
 
 -- Single-key mappings
 map("n", "<leader>?", require("telescope.builtin").help_tags, "Help")
-map("n", "<leader>q", [[:wqa<cr>]], "Help")
+map("n", "<leader>q", [[:wqa<cr>]], "Save & Quit")
 
 -- Window movement
 map("n", "<c-h>", [[<c-w>h]], "Focus left")
