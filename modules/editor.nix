@@ -54,6 +54,7 @@ in
     };
     environment.systemPackages = with pkgs; [
         bash-language-server
+        bc
         dotenv-linter
         hadolint
         lua-language-server

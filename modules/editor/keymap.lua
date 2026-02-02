@@ -128,6 +128,19 @@ map("n", "<leader>ca", [[:CodeCompanionActions<cr>]], "Actions")
 -- Single-key mappings
 map("n", "<leader>?", require("telescope.builtin").help_tags, "Help")
 map("n", "<leader>q", [[:wqa<cr>]], "Save & Quit")
+map("v", "<leader>=", function()
+    vim.cmd('normal! "zy')
+    local raw_input = vim.fn.getreg("z")
+    local clean_input = raw_input:gsub("%s+", "")
+    local output = vim.fn.system("bc <<< " .. vim.fn.shellescape(clean_input))
+    local result = output:match("[^%c\n\r]+") or ""
+    if result:find("error") or result == "" then
+        print("bc Error: " .. result)
+    else
+        vim.fn.setreg("z", result)
+        vim.cmd('normal! gv"zp')
+    end
+end, "Calculate")
 
 -- Window movement
 map("n", "<c-h>", [[<c-w>h]], "Focus left")
