@@ -3,19 +3,6 @@
 # Run in any shell with `vi`, `vim`, or `nvim`.
 # Uses NixOS to install all plugins and language servers.
 { pkgs, ... }:
-let
-    tsgo = pkgs.buildGoModule {
-        pname = "tsgo";
-        version = "unstable-2025-07-12";
-        src = pkgs.fetchFromGitHub {
-            owner = "microsoft";
-            repo = "typescript-go";
-            rev = "f9ca2a1d8ee34a19f21b909d1164c7b52a8f17c3";
-            sha256 = "sha256-kzHz+zUiPc2NgI5olgu0pyBnfUVk2+k9fB882ny+mpw=";
-        };
-        vendorHash = "sha256-9gZ1h/rsJ5DEcU8CJGKszE98GzZqfs2ELp1lbXsliYk=";
-    };
-in
 {
     programs.neovim = {
         enable = true;
@@ -32,6 +19,7 @@ in
                 bufferline-nvim
                 codecompanion-nvim
                 codecompanion-spinner-nvim
+                conform-nvim
                 fidget-nvim
                 gitsigns-nvim
                 lazydev-nvim
@@ -39,9 +27,7 @@ in
                 markdown-preview-nvim
                 nvim-lspconfig
                 nightfox-nvim
-                none-ls-nvim
                 nvim-tree-lua
-                # nvim-treesitter-textobjects # temporarily disabled because it causes nixos-rebuild to fail
                 nvim-treesitter.withAllGrammars
                 nvim-web-devicons
                 SchemaStore-nvim
@@ -56,18 +42,20 @@ in
         bash-language-server
         bc
         dotenv-linter
+        eslint_d
         hadolint
         lua-language-server
-        nil
         prettierd
+        nil
         statix
         stylelint
+        stylua
         tailwindcss-language-server
         terraform-ls
-        # tsgo
+        typescript-go
         vscode-langservers-extracted
         vtsls
         vue-language-server
-        yamllint
+        yaml-language-server
     ];
 }
