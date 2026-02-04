@@ -49,6 +49,7 @@ vim.lsp.config('vtsls', {
     },
 })
 vim.lsp.enable({
+    "basedpyright",
     "bashls",
     "cssls",
     "eslint",

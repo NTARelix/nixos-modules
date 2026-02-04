@@ -39,6 +39,7 @@
         };
     };
     environment.systemPackages = with pkgs; [
+        basedpyright
         bash-language-server
         bc
         dotenv-linter
