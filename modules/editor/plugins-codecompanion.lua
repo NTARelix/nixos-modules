@@ -2,22 +2,17 @@ require("codecompanion").setup({
     adapters = {
         http = {
             ollama = function()
-                local ollama_password = ""
-                local f = io.open("/etc/local-secrets/ollama-key", "r")
-                if f then
-                    ollama_password = f:read("*all"):gsub("%s+", "")
-                    f:close()
-                end
-                local credentials = "user:" .. ollama_password
-                local base64_auth = vim.base64.encode(credentials)
                 return require("codecompanion.adapters").extend("ollama", {
                     env = {
-                        url = "https://llm.kevinkoshiol.com"
+                        url = 'cmd: cat /etc/local-secrets/ollama-url',
+                        base64_auth = 'cmd: echo -n "user:$(cat /etc/local-secrets/ollama-key)" | base64',
                     },
                     headers = {
-                        ["Authorization"] = "Basic " .. base64_auth,
+                        ["Authorization"] = "Basic ${base64_auth}",
                     },
-                    parameters = { sync = true },
+                    parameters = {
+                        sync = true,
+                    },
                 })
             end
         }
