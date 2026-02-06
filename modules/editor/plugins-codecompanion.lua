@@ -4,7 +4,7 @@ require("codecompanion").setup({
             ollama = function()
                 return require("codecompanion.adapters").extend("ollama", {
                     env = {
-                        url = 'cmd: cat /etc/local-secrets/ollama-url',
+                        url = "cmd: cat /etc/local-secrets/ollama-url",
                         base64_auth = 'cmd: echo -n "user:$(cat /etc/local-secrets/ollama-key)" | base64',
                     },
                     headers = {
@@ -14,8 +14,8 @@ require("codecompanion").setup({
                         sync = true,
                     },
                 })
-            end
-        }
+            end,
+        },
     },
     interactions = {
         chat = {

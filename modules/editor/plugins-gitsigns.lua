@@ -6,4 +6,3 @@ gitsigns.setup({
         delay = 50,
     },
 })
-

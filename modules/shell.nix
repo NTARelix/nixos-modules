@@ -7,58 +7,57 @@
 # All plugins are managed here with NixOS.
 { pkgs, ... }:
 {
-    # Packages
-    environment.systemPackages = with pkgs; [
-        fzf
-        nodejs_24
-        ripgrep
-        unzip
-    ];
+  # Packages
+  environment.systemPackages = with pkgs; [
+    fzf
+    nodejs_24
+    ripgrep
+    unzip
+  ];
 
-    # Direnv
-    programs.direnv = {
-        enable = true;
-        enableZshIntegration = true;
-        nix-direnv.enable = true;
-    };
-    nix.extraOptions = ''
-        trusted-users = root nixos
+  # Direnv
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
+  nix.extraOptions = ''
+    trusted-users = root nixos
+  '';
+
+  # Shell
+  users.extraUsers.nixos.shell = pkgs.zsh;
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+    histSize = 100000;
+    histFile = "$HOME/.zsh_history";
+    interactiveShellInit = ''
+      source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
+      source ${pkgs.fzf}/share/fzf/key-bindings.zsh
+      source ${pkgs.fzf}/share/fzf/completion.zsh
     '';
-
-    # Shell
-    users.extraUsers.nixos.shell = pkgs.zsh;
-    programs.zsh = {
-        enable = true;
-        enableCompletion = true;
-        autosuggestions.enable = true;
-        syntaxHighlighting.enable = true;
-        histSize = 100000;
-        histFile = "$HOME/.zsh_history";
-        interactiveShellInit = ''
-            source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
-            source ${pkgs.fzf}/share/fzf/key-bindings.zsh
-            source ${pkgs.fzf}/share/fzf/completion.zsh
-        '';
-        ohMyZsh = {
-            enable = true;
-            plugins = [
-                "bgnotify"
-                "branch"
-                "common-aliases"
-                "docker"
-                "fzf"
-                "git"
-                "nodenv"
-                "npm"
-                "safe-paste"
-                "ssh"
-                "sudo"
-                "z"
-            ];
-        };
+    ohMyZsh = {
+      enable = true;
+      plugins = [
+        "bgnotify"
+        "branch"
+        "common-aliases"
+        "docker"
+        "fzf"
+        "git"
+        "nodenv"
+        "npm"
+        "safe-paste"
+        "ssh"
+        "sudo"
+        "z"
+      ];
     };
+  };
 
-    # Prompt
-    programs.starship.enable = true;
+  # Prompt
+  programs.starship.enable = true;
 }
-

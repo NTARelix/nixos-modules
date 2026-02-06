@@ -1,2 +1,1 @@
 require("nvim-treesitter").setup()
-

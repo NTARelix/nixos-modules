@@ -31,7 +31,12 @@ map("n", "<leader>dl", [[<cmd>Telescope diagnostics<cr>]], "List")
 
 require("which-key").add({ "<leader>f", group = "File" })
 map("n", "<leader>fo", [[<cmd>Telescope find_files<cr>]], "Open")
-map("n", "<leader>fO", [[<cmd>Telescope find_files follow=true no_ignore=true hidden=true<cr>]], "Open (all)")
+map(
+    "n",
+    "<leader>fO",
+    [[<cmd>Telescope find_files follow=true no_ignore=true hidden=true<cr>]],
+    "Open (all)"
+)
 map("n", "<C-s>", [[:w<cr>]], "Save")
 map("i", "<C-s>", [[<esc>:w<cr>gi]], "Save")
 map("n", "<leader><leader>", [[:so %<CR>]], "Source")

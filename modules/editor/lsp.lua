@@ -1,10 +1,11 @@
 -- vim.lsp.set_log_level("DEBUG")
 require("lazydev").setup()
 
-vim.lsp.config('cssls', {
+vim.lsp.config("cssls", {
     init_options = { provideFormatter = false }, -- needed to enable formatting capabilities
 })
-vim.lsp.config('jsonls', {
+
+vim.lsp.config("jsonls", {
     settings = {
         json = {
             schemas = require("schemastore").json.schemas(),
@@ -12,13 +13,21 @@ vim.lsp.config('jsonls', {
         },
     },
 })
-vim.lsp.config('tailwindcss', {
+
+vim.lsp.config("nil_ls", {
+    on_attach = function(client)
+        client.server_capabilities.documentFormattingProvider = false
+    end,
+})
+
+vim.lsp.config("tailwindcss", {
     settings = {
         tailwindCSS = {
             classFunctions = { "cva", "cx", "cn" },
         },
     },
 })
+
 local function get_nix_store_root(full_path)
     local pattern = "/nix/store/[a-z0-9%-\\.]+"
     local start_idx, end_idx = string.find(full_path, pattern)
@@ -28,11 +37,21 @@ local function get_nix_store_root(full_path)
         return nil
     end
 end
-local tsserver_path = get_nix_store_root(vim.loop.fs_realpath(
-        "/run/current-system/sw/bin/vue-language-server")) ..
-    "/lib/language-tools/packages/language-server"
-vim.lsp.config('vtsls', {
-    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "vue" },
+
+local tsserver_path = get_nix_store_root(
+    vim.loop.fs_realpath("/run/current-system/sw/bin/vue-language-server")
+) .. "/lib/language-tools/packages/language-server"
+
+vim.lsp.config("vtsls", {
+    filetypes = {
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx",
+        "vue",
+    },
     settings = {
         vtsls = {
             tsserver = {
@@ -48,6 +67,7 @@ vim.lsp.config('vtsls', {
         },
     },
 })
+
 vim.lsp.enable({
     "basedpyright",
     "bashls",

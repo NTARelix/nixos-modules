@@ -5,22 +5,21 @@
 # I.e. `ssh-keygen` and `~/.ssh`.
 { ... }:
 {
-    programs.git = {
-        enable = true;
-        config = {
-            alias.amend = "commit --amend --no-edit --reset-author";
-            alias.reup = "!git stash -u && git fetch origin main:main && git rebase main && git stash pop";
-            alias.stauts = "status";
-            alias.statsu = "status";
-            core.excludesFile = "~/.gitignore";
-            core.pager = "less -FX";
-            diff.algorithm = "patience";
-            merge.conflictStyle = "diff3";
-            merge.ff = "only";
-            pull.rebase = true;
-            push.autoSetupRemote = true;
-            user.name = "Kevin Koshiol";
-        };
+  programs.git = {
+    enable = true;
+    config = {
+      alias.amend = "commit --amend --no-edit --reset-author";
+      alias.reup = "!git stash -u && git fetch origin main:main && git rebase main && git stash pop";
+      alias.stauts = "status";
+      alias.statsu = "status";
+      core.excludesFile = "~/.gitignore";
+      core.pager = "less -FX";
+      diff.algorithm = "patience";
+      merge.conflictStyle = "diff3";
+      merge.ff = "only";
+      pull.rebase = true;
+      push.autoSetupRemote = true;
+      user.name = "Kevin Koshiol";
     };
+  };
 }
-

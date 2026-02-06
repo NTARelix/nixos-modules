@@ -3,4 +3,3 @@ require("which-key").setup({
         border = "single",
     },
 })
-

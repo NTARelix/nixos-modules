@@ -1,6 +1,6 @@
 { ... }:
 {
-    services.plantuml-server = {
-        enable = true;
-    };
+  services.plantuml-server = {
+    enable = true;
+  };
 }

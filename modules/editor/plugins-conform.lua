@@ -3,15 +3,14 @@
 ---@return fun(self, ctx): boolean a `condition` function that returns true if the file was found; false otherwise
 local function create_find_condition(patterns)
     return function(_, ctx)
-        return vim.fs.find(
-            function(name, _)
-                for _, pattern in ipairs(patterns) do
-                    if name:match(pattern) then return true end
+        return vim.fs.find(function(name, _)
+            for _, pattern in ipairs(patterns) do
+                if name:match(pattern) then
+                    return true
                 end
-                return false
-            end,
-            { upward = true, type = "file", path = ctx.filename }
-        )[1] ~= nil
+            end
+            return false
+        end, { upward = true, type = "file", path = ctx.filename })[1] ~= nil
     end
 end
 
@@ -30,6 +29,7 @@ require("conform").setup({
         json = { "prettierd" },
         less = { "prettierd" },
         lua = { "stylua" },
+        nix = { "nixfmt", stop_after_first = true },
         scss = { "prettierd" },
         typescript = prettier_formatter,
         typescriptreact = prettier_formatter,
