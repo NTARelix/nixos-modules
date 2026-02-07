@@ -37,26 +37,26 @@
         which-key-nvim
       ];
     };
-    environment.systemPackages = with pkgs; [
-      basedpyright
-      bash-language-server
-      bc
-      dotenv-linter
-      eslint_d
-      hadolint
-      lua-language-server
-      prettierd
-      nil
-      statix
-      stylelint
-      stylua
-      tailwindcss-language-server
-      terraform-ls
-      typescript-go
-      vscode-langservers-extracted
-      vtsls
-      vue-language-server
-      yaml-language-server
-    ];
   };
+  environment.systemPackages = with pkgs; [
+    basedpyright
+    bash-language-server
+    bc
+    dotenv-linter
+    eslint_d
+    hadolint
+    lua-language-server
+    prettierd
+    nil
+    statix
+    stylelint
+    stylua
+    tailwindcss-language-server
+    terraform-ls
+    typescript-go
+    vscode-langservers-extracted
+    vtsls
+    vue-language-server
+    yaml-language-server
+  ];
 }
