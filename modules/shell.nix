@@ -60,4 +60,27 @@
 
   # Prompt
   programs.starship.enable = true;
+
+  # Multiplexer
+  programs.tmux = {
+    enable = true;
+    baseIndex = 1;
+    historyLimit = 10000;
+    keyMode = "vi";
+    shortcut = "a";
+    terminal = "tmux-256color";
+    extraConfig = ''
+      set -s escape-time 0
+      set -g renumber-windows on
+      set -g focus-events on
+      bind h select-pane -L
+      bind j select-pane -D
+      bind k select-pane -U
+      bind l select-pane -R
+      bind -r H resize-pane -L
+      bind -r J resize-pane -D
+      bind -r K resize-pane -U
+      bind -r L resize-pane -R
+    '';
+  };
 }
