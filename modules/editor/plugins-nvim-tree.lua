@@ -8,6 +8,9 @@ require("nvim-tree").setup({
     update_focused_file = {
         enable = true,
     },
+    filters = {
+        git_ignored = false,
+    },
     on_attach = function(bufnr)
         local api = require("nvim-tree.api")
         --- Convenience wrapper around `vim.keymap.set` that only binds to the NvimTree buffer
