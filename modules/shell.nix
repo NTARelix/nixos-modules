@@ -67,12 +67,13 @@
     baseIndex = 1;
     historyLimit = 10000;
     keyMode = "vi";
-    shortcut = "a";
+    shortcut = "Space";
     terminal = "tmux-256color";
     extraConfig = ''
       set -s escape-time 0
       set -g renumber-windows on
       set -g focus-events on
+      bind-key C-Space send-prefix
       bind h select-pane -L
       bind j select-pane -D
       bind k select-pane -U
