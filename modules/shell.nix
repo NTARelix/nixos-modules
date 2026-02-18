@@ -71,6 +71,7 @@
     terminal = "tmux-256color";
     extraConfig = ''
       set -ag terminal-overrides ",xterm-256color:RGB"
+      set -as terminal-overrides ',xterm-256color:Smulx=\E[4::%p1%dm'  # undercurl support
       set -s escape-time 0
       set -g renumber-windows on
       set -g focus-events on
