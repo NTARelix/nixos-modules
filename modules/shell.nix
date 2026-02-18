@@ -70,6 +70,7 @@
     shortcut = "Space";
     terminal = "tmux-256color";
     extraConfig = ''
+      set -ag terminal-overrides ",xterm-256color:RGB"
       set -s escape-time 0
       set -g renumber-windows on
       set -g focus-events on
