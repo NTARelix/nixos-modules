@@ -21,12 +21,8 @@
     enableZshIntegration = true;
     nix-direnv.enable = true;
   };
-  nix.extraOptions = ''
-    trusted-users = root nixos
-  '';
 
   # Shell
-  users.extraUsers.nixos.shell = pkgs.zsh;
   programs.zsh = {
     enable = true;
     enableCompletion = true;
