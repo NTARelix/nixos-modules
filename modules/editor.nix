@@ -17,8 +17,6 @@
       packages.myVimPackages.start = with pkgs.vimPlugins; [
         blink-cmp
         bufferline-nvim
-        codecompanion-nvim
-        codecompanion-spinner-nvim
         conform-nvim
         fidget-nvim
         gitsigns-nvim
