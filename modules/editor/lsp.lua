@@ -68,6 +68,7 @@ vim.lsp.enable({
     "cssls",
     "eslint",
     "html",
+    "jdtls",
     "jsonls",
     "lua_ls",
     "nil_ls",

@@ -43,6 +43,7 @@
     dotenv-linter
     eslint_d
     hadolint
+    jdt-language-server
     lua-language-server
     prettierd
     nil
