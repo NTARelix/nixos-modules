@@ -1,3 +1,16 @@
+local function is_wsl()
+    local version_file = io.open("/proc/version", "r")
+    if version_file then
+        local content = version_file:read("*all"):lower()
+        version_file:close()
+        return content:find("microsoft") ~= nil
+    end
+    return false
+end
+
+if is_wsl() then
+    vim.g.clipboard = "win32yank"
+end
 vim.opt.list = true
 vim.opt.number = true
 vim.opt.relativenumber = true
