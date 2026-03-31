@@ -72,7 +72,7 @@ end, "Toggle LSP Hover")
 map("n", "<m-k>", vim.lsp.buf.signature_help, "LSP Hover Signature")
 
 require("which-key").add({ "<leader>g", group = "Git" })
-map("n", "<leader>gs", require("telescope.builtin").git_status, "Status")
+map("n", "<leader>gd", [[:CodeDiff<cr>]], "Diff")
 map("n", "<leader>gb", require("telescope.builtin").git_branches, "Branch")
 map("n", "<leader>gh", require("telescope.builtin").git_stash, "Stash")
 map("n", "<leader>gl", require("telescope.builtin").git_commits, "Log")
@@ -105,7 +105,7 @@ map("n", "[c", function()
     else
         require("gitsigns").nav_hunk("prev")
     end
-end, "Next change")
+end, "Previous change")
 
 require("which-key").add({ "<leader>t", group = "Text" })
 map("n", "<leader>ts", require("telescope.builtin").live_grep, "Search")

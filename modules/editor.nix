@@ -18,13 +18,14 @@
         blink-cmp
         bufferline-nvim
         conform-nvim
+        codediff-nvim
         fidget-nvim
         gitsigns-nvim
         lazydev-nvim
         lualine-nvim
         markdown-preview-nvim
-        nvim-lspconfig
         nightfox-nvim
+        nvim-lspconfig
         nvim-tree-lua
         nvim-treesitter.withAllGrammars
         nvim-web-devicons
