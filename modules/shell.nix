@@ -23,6 +23,10 @@
   };
 
   # Shell
+  users.users.nixos = {
+    isNormalUser = true;
+    shell = pkgs.zsh;
+  };
   programs.zsh = {
     enable = true;
     enableCompletion = true;
