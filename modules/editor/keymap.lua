@@ -170,6 +170,10 @@ map("n", "J", [[mzJ`z]], "Join")
 map("v", "<leader>d", [["_d]], "Delete")
 map("x", "<leader>p", [["_dP]], "Paste")
 
+-- Centered scrolling
+map("n", "<C-j>", [[jzz]], "Down with centering")
+map("n", "<C-k>", [[kzz]], "Up with centering")
+
 -- Overwrite defaults
 map("n", "<C-d>", [[<C-d>zz]], "Scroll down")
 map("n", "<C-u>", [[<C-u>zz]], "Scroll up")
