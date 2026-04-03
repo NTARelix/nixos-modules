@@ -72,6 +72,7 @@ vim.lsp.enable({
     "jsonls",
     "lua_ls",
     "nil_ls",
+    "ols",
     "statix",
     "stylelint_lsp",
     "tailwindcss",
