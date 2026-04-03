@@ -153,6 +153,10 @@ map("n", "<c-j>", [[<c-w>j]], "Focus down")
 map("n", "<c-k>", [[<c-w>k]], "Focus up")
 map("n", "<c-l>", [[<c-w>l]], "Focus right")
 
+-- Scrolling
+map("n", "<m-j>", [[jzz]], "Scroll down")
+map("n", "<m-k>", [[kzz]], "Scroll up")
+
 -- Window resize
 map("n", "<c-up>", [[<cmd>resize -2<cr>]], "")
 map("n", "<c-down>", [[<cmd>resize +2<cr>]], "")
