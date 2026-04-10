@@ -53,7 +53,6 @@
         "npm"
         "safe-paste"
         "ssh"
-        "sudo"
         "z"
       ];
     };
