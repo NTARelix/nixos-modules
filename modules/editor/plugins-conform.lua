@@ -38,7 +38,7 @@ require("conform").setup({
     },
     formatters = {
         eslint_d = {
-            condition = create_find_condition({ "^%.eslintrc", "^eslint%config%." }),
+            condition = create_find_condition({ "^%.eslintrc", "^eslint%.config%." }),
         },
         prettierd = {
             condition = create_find_condition({ "^%.prettierrc", "^prettier%.config%." }),
