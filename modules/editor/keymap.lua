@@ -39,7 +39,7 @@ map(
 )
 map("n", "<C-s>", [[:w<cr>]], "Save")
 map("i", "<C-s>", [[<esc>:w<cr>gi]], "Save")
-map("n", "<leader><leader>", [[:so %<CR>]], "Source")
+map("n", "<leader><leader>", [[:restart<CR>]], "Restart")
 
 require("which-key").add({ "<leader>b", group = "Buffer" })
 map("n", "<leader>bf", vim.lsp.buf.format, "Format")
