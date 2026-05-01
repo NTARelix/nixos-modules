@@ -59,8 +59,20 @@ vim.lsp.config("vtsls", {
                 },
             },
         },
+        typescript = {
+            inlayHints = {
+                parameterNames = { enabled = "literals" },
+                parameterTypes = { enabled = true },
+                vartiableTypes = { enabled = true },
+                propertyDeclarationTypes = { enabled = true },
+                functionLikeReturnTypes = { enabled = true },
+                enumMemberValues = { enabled = true },
+            },
+        },
     },
 })
+
+vim.lsp.inlay_hint.enable(true)
 
 vim.lsp.enable({
     "basedpyright",
