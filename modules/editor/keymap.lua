@@ -49,7 +49,6 @@ map("n", "<leader>br", [[<cmd>edit!<cr>]], "Reload")
 
 require("which-key").add({ "<leader>l", group = "LSP" })
 map("n", "<leader>la", vim.lsp.buf.code_action, "Action")
-map("n", "<leader>ld", [[<cmd>Telescope lsp_definitions<cr>]], "Definition(s)")
 map("n", "<leader>lt", [[<cmd>Telescope lsp_type_definitions<cr>]], "Type Definition(s)")
 map("n", "<leader>lh", function()
     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
