@@ -30,6 +30,8 @@
         nvim-treesitter.withAllGrammars
         nvim-web-devicons
         SchemaStore-nvim
+        telescope-nvim
+        telescope-ui-select-nvim
         vim-fugitive
         vim-visual-multi
         which-key-nvim
