@@ -14,33 +14,31 @@ local function create_find_condition(patterns)
     end
 end
 
-local prettier_formatter = { "prettierd", "eslint_d", stop_after_first = true }
-
 require("conform").setup({
-    format_on_save = {
-        timeout_ms = 500,
+    format_after_save = {
         lsp_format = "fallback",
+        async = true,
     },
     formatters_by_ft = {
-        css = { "prettierd" },
-        html = { "prettierd" },
-        javascript = prettier_formatter,
-        javascriptreact = prettier_formatter,
-        json = { "prettierd" },
-        less = { "prettierd" },
+        css = { "prettier" },
+        html = { "prettier" },
+        javascript = { "eslint_d" },
+        javascriptreact = { "eslint_d" },
+        json = { "prettier" },
+        less = { "prettier" },
         lua = { "stylua" },
-        nix = { "nixfmt", stop_after_first = true },
-        scss = { "prettierd" },
-        typescript = prettier_formatter,
-        typescriptreact = prettier_formatter,
-        vue = prettier_formatter,
-        yaml = { "prettierd" },
+        nix = { "nixfmt" },
+        scss = { "prettier" },
+        typescript = { "eslint_d" },
+        typescriptreact = { "eslint_d" },
+        vue = { "eslint_d" },
+        yaml = { "prettier" },
     },
     formatters = {
         eslint_d = {
             condition = create_find_condition({ "^%.eslintrc", "^eslint%.config%." }),
         },
-        prettierd = {
+        prettier = {
             condition = create_find_condition({ "^%.prettierrc", "^prettier%.config%." }),
         },
     },
