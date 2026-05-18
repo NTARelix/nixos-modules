@@ -3,6 +3,19 @@
 # Run in any shell with `vi`, `vim`, or `nvim`.
 # Uses NixOS to install all plugins and language servers.
 { pkgs, ... }:
+let
+  helix_custom = pkgs.symlinkJoin {
+    name = "helix_custom";
+    paths = [
+      pkgs.helix
+    ];
+    buildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/hx \
+        --set XDG_CONFIG_HOME "/etc/nixos-modules/modules/xdg-config-home"
+    '';
+  };
+in
 {
   programs.neovim = {
     enable = true;
@@ -45,7 +58,7 @@
     dotenv-linter
     eslint_d
     hadolint
-    helix
+    helix_custom
     jdt-language-server
     lua-language-server
     prettierd
