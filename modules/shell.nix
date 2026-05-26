@@ -10,6 +10,7 @@
   # Packages
   environment.systemPackages = with pkgs; [
     fzf
+    jq
     man-pages
     nodejs_24
     ripgrep
