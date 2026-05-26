@@ -21,31 +21,9 @@ local function map(mode, lhs, rhs, desc)
 end
 
 -- Modes
-map("n", "<leader>z", [[:NvimTreeToggle<cr>]], "Distraction free")
-
-require("which-key").add({ "<leader>d", group = "Diagnostics" })
-map("n", "<leader>ds", function()
-    vim.diagnostic.open_float({ border = border })
-end, "Show")
-map("n", "<leader>dl", [[<cmd>Telescope diagnostics<cr>]], "List")
-
 require("which-key").add({ "<leader>f", group = "File" })
-map("n", "<leader>fo", [[<cmd>Telescope find_files<cr>]], "Open")
-map(
-    "n",
-    "<leader>fO",
-    [[<cmd>Telescope find_files follow=true no_ignore=true hidden=true<cr>]],
-    "Open (all)"
-)
-map("n", "<C-s>", [[:w<cr>]], "Save")
-map("i", "<C-s>", [[<esc>:w<cr>gi]], "Save")
+map("n", "<leader>f", [[<cmd>Telescope find_files<cr>]], "Open")
 map("n", "<leader><leader>", [[:restart<CR>]], "Restart")
-
-require("which-key").add({ "<leader>b", group = "Buffer" })
-map("n", "<leader>bf", vim.lsp.buf.format, "Format")
-map("n", "<leader>bs", [[<cmd>Telescope buffers<cr>]], "Search")
-map("n", "<leader>bd", [[<cmd>bprev | bdelete #<cr>]], "Delete")
-map("n", "<leader>br", [[<cmd>edit!<cr>]], "Reload")
 
 require("which-key").add({ "<leader>l", group = "LSP" })
 map("n", "<leader>la", vim.lsp.buf.code_action, "Action")
@@ -57,21 +35,10 @@ map("n", "<leader>li", [[<cmd>Telescope lsp_implementations<cr>]], "Implementati
 map("n", "<leader>ln", vim.lsp.buf.rename, "Rename")
 map("n", "<leader>lr", [[<cmd>Telescope lsp_references<cr>]], "References")
 map("n", "<leader>ls", [[<cmd>Telescope lsp_symbols<cr>]], "Symbols")
-map("n", "K", function()
-    local base_win_id = vim.api.nvim_get_current_win()
-    local windows = vim.api.nvim_tabpage_list_wins(0)
-    for _, win_id in ipairs(windows) do
-        if win_id ~= base_win_id then
-            local win_cfg = vim.api.nvim_win_get_config(win_id)
-            if win_cfg.relative == "win" and win_cfg.win == base_win_id then
-                vim.api.nvim_win_close(win_id, {})
-                return
-            end
-        end
-    end
-    vim.lsp.buf.hover({ border = border })
-end, "Toggle LSP Hover")
 map("n", "<m-k>", vim.lsp.buf.signature_help, "LSP Hover Signature")
+
+require("which-key").add({ "g", group = "Go to" })
+map("n", "gd", require("telescope.builtin").lsp_definitions, "Definitions")
 
 require("which-key").add({ "<leader>g", group = "Git" })
 map("n", "<leader>gd", [[:CodeDiff<cr>]], "Diff")
@@ -109,32 +76,12 @@ map("n", "[c", function()
     end
 end, "Previous change")
 
-require("which-key").add({ "<leader>t", group = "Text" })
-map("n", "<leader>ts", require("telescope.builtin").live_grep, "Search")
--- map("n", "<leader>tr", function()
---     require("grug-far").open({
---         transient = true,
---         prefills = {
---             search = vim.fn.expand("<cword>"),
---         },
---     })
--- end, "Replace")
-
-require("which-key").add({ "<leader>c", group = "Companion" })
-map("n", "<leader>cc", function()
-    require("codecompanion").toggle({
-        window_opts = {
-            layout = "vertical",
-            position = "right",
-            width = 0.33,
-        },
-    })
-end, "Chat (toggle)")
-map("n", "<leader>ca", [[:CodeCompanionActions<cr>]], "Actions")
-
 -- Single-key mappings
+map("n", "<leader>b", [[<cmd>bprev | bdelete #<cr>]], "Close buffer")
+map("n", "<leader>z", [[:NvimTreeToggle<cr>]], "Toggle tree")
+map("n", "<leader>d", vim.diagnostic.open_float, "Show")
+map("n", "<leader>/", require("telescope.builtin").live_grep, "Search")
 map("n", "<leader>?", require("telescope.builtin").help_tags, "Help")
-map("n", "<leader>q", [[:wqa<cr>]], "Save & Quit")
 map("v", "<leader>=", function()
     vim.cmd('normal! "zy')
     local raw_input = vim.fn.getreg("z")
