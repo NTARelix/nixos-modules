@@ -1,0 +1,20 @@
+[language-server.tsgo]
+command = "tsgo"
+args = ["--lsp", "--stdio"]
+
+[[language]]
+name = "typescript"
+language-servers = [ { name = "tsgo" } ]
+
+[language-server.vtsls]
+command = "vtsls"
+
+[[language-server.vtsls.config.vtsls.tsserver.globalPlugins]]
+name = "@vue/typescript-plugin"
+location = "/etc/vue-typescript-plugin"
+languages = ["vue"]
+configNamespace = "typescript"
+
+[[language]]
+name = "vue"
+language-servers = [ { name = "vtsls" } ]

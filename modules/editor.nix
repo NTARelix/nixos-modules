@@ -6,8 +6,12 @@
 let
   helix_custom = pkgs.symlinkJoin {
     name = "helix_custom";
-    paths = [
-      pkgs.helix
+    paths = with pkgs; [
+      helix
+      tailwindcss-language-server
+      typescript-go
+      vscode-langservers-extracted
+      vtsls
     ];
     buildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
@@ -50,6 +54,10 @@ in
         which-key-nvim
       ];
     };
+  };
+  environment.etc = {
+    "vue-typescript-plugin".source =
+      "${pkgs.vue-language-server}/lib/language-tools/packages/language-server";
   };
   environment.systemPackages = with pkgs; [
     basedpyright

@@ -22,20 +22,6 @@ vim.lsp.config("tailwindcss", {
     },
 })
 
-local function get_nix_store_root(full_path)
-    local pattern = "/nix/store/[a-z0-9%-\\.]+"
-    local start_idx, end_idx = string.find(full_path, pattern)
-    if start_idx then
-        return string.sub(full_path, start_idx, end_idx)
-    else
-        return nil
-    end
-end
-
-local tsserver_path = get_nix_store_root(
-    vim.loop.fs_realpath("/run/current-system/sw/bin/vue-language-server")
-) .. "/lib/language-tools/packages/language-server"
-
 vim.lsp.config("vtsls", {
     filetypes = {
         "javascript",
@@ -52,27 +38,15 @@ vim.lsp.config("vtsls", {
                 globalPlugins = {
                     {
                         name = "@vue/typescript-plugin",
-                        location = tsserver_path,
+                        location = "/etc/vue-typescript-plugin",
                         languages = { "vue" },
                         configNamespace = "typescript",
                     },
                 },
             },
         },
-        typescript = {
-            inlayHints = {
-                parameterNames = { enabled = "literals" },
-                parameterTypes = { enabled = true },
-                vartiableTypes = { enabled = true },
-                propertyDeclarationTypes = { enabled = true },
-                functionLikeReturnTypes = { enabled = true },
-                enumMemberValues = { enabled = true },
-            },
-        },
     },
 })
-
-vim.lsp.inlay_hint.enable(true)
 
 vim.lsp.enable({
     "basedpyright",
