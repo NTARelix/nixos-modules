@@ -9,6 +9,7 @@ let
     paths = with pkgs; [
       helix
       tailwindcss-language-server
+      tombi
       typescript-go
       vscode-langservers-extracted
       vtsls
