@@ -71,6 +71,7 @@
     shortcut = "Space";
     terminal = "tmux-256color";
     extraConfig = ''
+      set -g mouse on
       set -ag terminal-overrides ",xterm-256color:RGB"
       set -as terminal-overrides ',xterm-256color:Smulx=\E[4::%p1%dm'  # undercurl support
       set -s escape-time 0
@@ -85,6 +86,8 @@
       bind -r J resize-pane -D
       bind -r K resize-pane -U
       bind -r L resize-pane -R
+      bind -T copy-mode-vi WheelUpPane send-keys -X scroll-up
+      bind -T copy-mode-vi WheelDownPane send-keys -X scroll-down
     '';
   };
 }
