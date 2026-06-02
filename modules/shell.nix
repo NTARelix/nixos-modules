@@ -75,6 +75,8 @@
     ];
     extraConfig = ''
       set -g mouse on
+      set -g status-right ""
+      set -g status-right-length 0
       set -ag terminal-overrides ",xterm-256color:RGB"
       set -as terminal-overrides ',xterm-256color:Smulx=\E[4::%p1%dm'  # undercurl support
       set -s escape-time 0
