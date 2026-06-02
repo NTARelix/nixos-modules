@@ -70,6 +70,9 @@
     keyMode = "vi";
     shortcut = "Space";
     terminal = "tmux-256color";
+    plugins = with pkgs.tmuxPlugins; [
+      gruvbox
+    ];
     extraConfig = ''
       set -g mouse on
       set -ag terminal-overrides ",xterm-256color:RGB"
