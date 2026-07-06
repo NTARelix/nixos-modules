@@ -1,5 +1,8 @@
 theme = "nightfox"
 
+[editor]
+rulers = [80]
+
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
@@ -7,7 +10,9 @@ select = "underline"
 
 [editor.soft-wrap]
 enable = true
-wrap-at-text-width = true
 
 [editor.whitespace]
 render = "all"
+
+[keys.normal]
+X = "extend_line_above"
