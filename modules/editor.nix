@@ -48,7 +48,8 @@ let
     ];
     buildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
-      wrapProgram $out/bin/hx \
+      rm $out/bin/hx
+      makeWrapper "$(readlink -f ${helix-custom-unwrapped}/bin/.hx-wrapped)" $out/bin/hx \
         --set XDG_CONFIG_HOME "/etc/nixos-modules/modules/xdg-config-home" \
         --set-default XDG_DATA_HOME "\$HOME/.local/share" \
         --set-default XDG_CACHE_HOME "\$HOME/.cache" \
