@@ -8,6 +8,7 @@
 { pkgs, ... }:
 {
   # Packages
+  environment.localBinInPath = true;
   environment.systemPackages = with pkgs; [
     fzf
     jq
