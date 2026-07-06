@@ -4,10 +4,42 @@
 # Uses NixOS to install all plugins and language servers.
 { pkgs, ... }:
 let
+  apex-lsp-jar = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/forcedotcom/salesforcedx-vscode/develop/packages/salesforcedx-vscode-apex/jars/apex-jorje-lsp.jar";
+    sha256 = "sha256-JUnD/zu6dUtc6eSUciSJRu6cKe9kt+zVEvpttuqsICc=";
+  };
+  tree-sitter-apex = pkgs.tree-sitter.buildGrammar {
+    language = "apex";
+    version = "unstable-2026-07-06";
+    src = pkgs.fetchFromGitHub {
+      owner = "aheber";
+      repo = "tree-sitter-sfapex";
+      rev = "27a3091a1a444ce19d6099e00cd3788f019d0c2b";
+      hash = "sha256-Pg8zZmjGFcLftPNPiASt0uUxYG6CRcsB9qKhTMC5G7U=";
+    };
+    location = "apex";
+  };
+  helix-runtime-with-apex = pkgs.runCommand "helix-runtime-with-apex" {} ''
+    mkdir -p $out/grammars $out/queries
+    cp -r ${pkgs.helix.runtime}/queries/. $out/queries/
+    cp -r ${pkgs.helix.runtime}/grammars/. $out/grammars/
+    chmod -R u+w $out
+    install -Dm444 ${tree-sitter-apex}/parser $out/grammars/apex.so
+    mkdir -p $out/queries/apex
+    cp ${tree-sitter-apex}/queries/*.scm $out/queries/apex/
+  '';
+  helix-custom-unwrapped = pkgs.helix.overrideAttrs (old: {
+    src = pkgs.fetchFromGitHub {
+      owner = "helix-editor";
+      repo = "helix";
+      rev = "1cbad945984e8409d3872b070afbb25fda525a5f";
+      hash = "sha256-NDpCGVn6FYEnkgU6owOQV3OLYPd+NXu0iLN1+6Rwj78=";
+    };
+  });
   helix_custom = pkgs.symlinkJoin {
     name = "helix_custom";
     paths = with pkgs; [
-      helix
+      helix-custom-unwrapped
       tailwindcss-language-server
       tombi
       typescript-go
@@ -17,7 +49,11 @@ let
     buildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
       wrapProgram $out/bin/hx \
-        --set XDG_CONFIG_HOME "/etc/nixos-modules/modules/xdg-config-home"
+        --set XDG_CONFIG_HOME "/etc/nixos-modules/modules/xdg-config-home" \
+        --set-default XDG_DATA_HOME "\$HOME/.local/share" \
+        --set-default XDG_CACHE_HOME "\$HOME/.cache" \
+        --prefix PATH : "${pkgs.jdk17}/bin" \
+        --set HELIX_RUNTIME "${helix-runtime-with-apex}"
     '';
   };
 in
@@ -59,6 +95,7 @@ in
   environment.etc = {
     "vue-typescript-plugin".source =
       "${pkgs.vue-language-server}/lib/language-tools/packages/language-server";
+    "apex-jorje-lsp.jar".source = "${apex-lsp-jar}";
   };
   environment.systemPackages = with pkgs; [
     basedpyright

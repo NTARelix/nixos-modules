@@ -1,13 +1,48 @@
+[[language]]
+name = "apex"
+scope = "source.apex"
+injection-regex = "apex"
+file-types = ["cls", "trigger"]
+roots = ["sfdx-project.json"]
+comment-tokens = "//"
+language-servers = ["apex-ls"]
+
+[[language]]
+name = "toml"
+auto-format = true
+
+[[language]]
+name = "typescript"
+language-servers = [{ name = "vtsls" }, { name = "eslint" }]
+auto-format = true
+
+[[language]]
+name = "vue"
+language-servers = [{ name = "vtsls" }, { name = "eslint" }]
+auto-format = true
+
+# apex
+[language-server.apex-ls]
+command = "java"
+args = [
+  "-cp",
+  "/etc/apex-jorje-lsp.jar",
+  "-Ddebug.internal.errors=true",
+  "-Ddebug.semantic.errors=false",
+  "-Ddebug.completion.statistics=false",
+  "-Dlwc.typegeneration.disabled=true",
+  "apex.jorje.lsp.ApexLanguageServerLauncher",
+]
+
+# tsgo
 [language-server.tsgo]
 command = "tsgo"
 args = ["--lsp", "--stdio"]
 
-[[language]]
-name = "typescript"
-language-servers = [ { name = "tsgo" } ]
-
+# vtsls (fallback for typescript-compatible languages that are not yet supported by tsgo; e.g. Vue)
 [language-server.vtsls]
 command = "vtsls"
+args = ["--stdio"]
 
 [[language-server.vtsls.config.vtsls.tsserver.globalPlugins]]
 name = "@vue/typescript-plugin"
@@ -15,6 +50,28 @@ location = "/etc/vue-typescript-plugin"
 languages = ["vue"]
 configNamespace = "typescript"
 
-[[language]]
-name = "vue"
-language-servers = [ { name = "vtsls" } ]
+# eslint
+[language-server.eslint]
+command = "vscode-eslint-language-server"
+args = ["--stdio"]
+
+[language-server.eslint.config.eslint]
+validate = "on"
+useESLintClass = false
+experimental = {}
+codeActionOnSave = { enable = true, mode = "all" }
+format = true
+quiet = false
+onIgnoredFiles = "off"
+rulesCustomizations = {}
+run = "onType"
+problems = { shortenToSingleLine = false }
+nodePath = ""
+workingDirectory = { mode = "auto" }
+
+[language-server.eslint.config.eslint.codeAction.disableRuleComment]
+enable = true
+location = "separateLine"
+
+[language-server.eslint.config.eslint.codeAction.showDocumentation]
+enable = true
