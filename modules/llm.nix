@@ -2,6 +2,6 @@
 {
   environment.systemPackages = with pkgs; [
     claude-code
-    opencode
+    pi-coding-agent
   ];
 }
