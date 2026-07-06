@@ -4,8 +4,8 @@ let
     pname = "sf-cli";
     version = "2.136.8";
     src = pkgs.fetchurl {
-      url = "https://github.com/salesforcecli/cli/releases/download/2.138.0/sf-v2.138.0-a16ef08-linux-x64.tar.xz";
-      hash = "sha256-I0NnzP8nbJVuNqAGYIcRa6spPbs2YyKQvGkc0n3bncg=";
+      url = "https://github.com/salesforcecli/cli/releases/download/2.142.1/sf-v2.142.1-e403f1c-linux-x64.tar.xz";
+      hash = "sha256-YYahc3/GJ3Y9ubZESM/SPWt3I2B9zSwGfHs5K68YuEY=";
     };
     installPhase = ''
       mkdir -p $out
