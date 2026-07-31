@@ -5,7 +5,10 @@
 # Configured here with NixOS, as well as a generated p10k theme config in `./shell/p10k.zsh`.
 # Also adds tools for command-line convenience.
 # All plugins are managed here with NixOS.
-{ pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 {
   # Packages
   environment.localBinInPath = true;
@@ -26,10 +29,7 @@
   };
 
   # Shell
-  users.users.nixos = {
-    isNormalUser = true;
-    shell = pkgs.zsh;
-  };
+  users.defaultUserShell = pkgs.zsh;
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -37,11 +37,6 @@
     syntaxHighlighting.enable = true;
     histSize = 100000;
     histFile = "$HOME/.zsh_history";
-    interactiveShellInit = ''
-      source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
-      source ${pkgs.fzf}/share/fzf/key-bindings.zsh
-      source ${pkgs.fzf}/share/fzf/completion.zsh
-    '';
     ohMyZsh = {
       enable = true;
       plugins = [
@@ -58,6 +53,10 @@
         "z"
       ];
     };
+  };
+  programs.fzf = {
+    keybindings = true;
+    fuzzyCompletion = true;
   };
 
   # Prompt
