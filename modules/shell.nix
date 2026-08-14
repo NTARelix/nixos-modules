@@ -13,6 +13,7 @@
   # Packages
   environment.localBinInPath = true;
   environment.systemPackages = with pkgs; [
+    herdr
     fzf
     jq
     man-pages
