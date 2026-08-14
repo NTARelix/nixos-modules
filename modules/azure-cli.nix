@@ -9,6 +9,7 @@ in
   environment.systemPackages = with pkgs; [
     # oldPkgs because https://github.com/NixOS/nixpkgs/issues/437525
     (oldPkgs.azure-cli.withExtensions [
+      oldPkgs.azure-cli.extensions.azure-devops
       oldPkgs.azure-cli.extensions.containerapp
       oldPkgs.azure-cli.extensions.log-analytics
       oldPkgs.azure-cli.extensions.rdbms-connect
