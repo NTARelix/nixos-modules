@@ -1,0 +1,16 @@
+# Custom herdr config. See `herdr --default-config` for all available options.
+
+[keys]
+# Pane navigation (narrow scope), no prefix needed.
+focus_pane_left = "alt+h"
+focus_pane_down = "alt+j"
+focus_pane_up = "alt+k"
+focus_pane_right = "alt+l"
+
+# Tab navigation (broad scope): tabs are stacked horizontally.
+previous_tab = "alt+shift+h"
+next_tab = "alt+shift+l"
+
+# Workspace navigation (broad scope): workspaces are stacked vertically.
+previous_workspace = "alt+shift+k"
+next_workspace = "alt+shift+j"

@@ -21,6 +21,9 @@
     ripgrep
     unzip
   ];
+  environment.sessionVariables = {
+    HERDR_CONFIG_PATH = "/etc/nixos-modules/modules/herdr/config.toml";
+  };
 
   # Direnv
   programs.direnv = {
