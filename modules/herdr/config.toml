@@ -14,3 +14,8 @@ next_tab = "alt+shift+l"
 # Workspace navigation (broad scope): workspaces are stacked vertically.
 previous_workspace = "alt+shift+k"
 next_workspace = "alt+shift+j"
+
+[ui]
+# Use the outer terminal cursor so app-requested shapes (Helix bar/underline) work.
+# "auto" draws Herdr's own cursor on WSL, which loses shape and blink.
+host_cursor = "native"

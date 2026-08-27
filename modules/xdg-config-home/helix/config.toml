@@ -2,6 +2,7 @@ theme = "nightfox"
 
 [editor]
 rulers = [80]
+undercurl = true
 
 [editor.cursor-shape]
 insert = "bar"
