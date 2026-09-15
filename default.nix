@@ -7,6 +7,7 @@ let
     oci = import ./modules/oci.nix;
     plantuml = import ./modules/plantuml.nix;
     playwright-cli = import ./modules/playwright-cli.nix;
+    pup-cli = import ./modules/pup-cli.nix;
     salesforce = import ./modules/salesforce.nix;
     shell = import ./modules/shell.nix;
     terraform-cli = import ./modules/terraform-cli.nix;
