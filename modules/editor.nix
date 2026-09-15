@@ -42,7 +42,6 @@ let
       helix-custom-unwrapped
       tailwindcss-language-server
       tombi
-      typescript-go
       vscode-langservers-extracted
       vtsls
     ];
@@ -115,7 +114,6 @@ in
     stylua
     tailwindcss-language-server
     terraform-ls
-    typescript-go
     vscode-langservers-extracted
     vtsls
     vue-language-server
