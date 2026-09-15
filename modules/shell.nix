@@ -18,6 +18,7 @@
     jq
     man-pages
     nodejs_24
+    pandoc
     ripgrep
     unzip
   ];
