@@ -7,6 +7,7 @@
     pkg:
     builtins.elem (lib.getName pkg) [
       "claude-code"
+      "databricks-cli"
       "terraform"
     ];
 }

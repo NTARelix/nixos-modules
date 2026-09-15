@@ -1,6 +1,7 @@
 let
   modules = {
     azure-cli = import ./modules/azure-cli.nix;
+    databricks-cli = import ./modules/databricks-cli.nix;
     editor = import ./modules/editor.nix;
     git = import ./modules/git.nix;
     llm = import ./modules/llm.nix;
