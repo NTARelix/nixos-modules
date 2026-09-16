@@ -25,6 +25,9 @@
   environment.sessionVariables = {
     HERDR_CONFIG_PATH = "/etc/nixos-modules/modules/herdr/config.toml";
   };
+  systemd.tmpfiles.rules = [
+    "L+ /home/nixos/.claude/skills/herdr - - - - ${pkgs.herdr}/share/skills/herdr/herdr"
+  ];
 
   # Direnv
   programs.direnv = {
