@@ -68,7 +68,12 @@
   };
 
   # Prompt
-  programs.starship.enable = true;
+  programs.starship = {
+    enable = true;
+    settings = {
+      netns.disabled = true;
+    };
+  };
 
   # Multiplexer
   programs.tmux = {
