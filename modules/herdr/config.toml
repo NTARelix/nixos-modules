@@ -1,5 +1,7 @@
 # Custom herdr config. See `herdr --default-config` for all available options.
 
+onboarding = false
+
 [keys]
 # Pane navigation (narrow scope), no prefix needed.
 focus_pane_left = "alt+h"
