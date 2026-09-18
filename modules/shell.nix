@@ -9,11 +9,16 @@
   pkgs,
   ...
 }:
+let
+  unstablePkgs = import (builtins.fetchTarball {
+    url = "https://github.com/NixOS/nixpkgs/archive/e554fab72f81915600f3f449b786fd9af40439a5.tar.gz";
+  }) { };
+in
 {
   # Packages
   environment.localBinInPath = true;
   environment.systemPackages = with pkgs; [
-    herdr
+    unstablePkgs.herdr
     fzf
     jq
     man-pages
@@ -25,9 +30,6 @@
   environment.sessionVariables = {
     HERDR_CONFIG_PATH = "/etc/nixos-modules/modules/herdr/config.toml";
   };
-  systemd.tmpfiles.rules = [
-    "L+ /home/nixos/.claude/skills/herdr - - - - ${pkgs.herdr}/share/skills/herdr/herdr"
-  ];
 
   # Direnv
   programs.direnv = {
