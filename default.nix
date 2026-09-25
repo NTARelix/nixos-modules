@@ -5,6 +5,7 @@ let
     editor = import ./modules/editor.nix;
     git = import ./modules/git.nix;
     llm = import ./modules/llm.nix;
+    mermaid-cli = import ./modules/mermaid-cli.nix;
     oci = import ./modules/oci.nix;
     plantuml = import ./modules/plantuml.nix;
     playwright-cli = import ./modules/playwright-cli.nix;
