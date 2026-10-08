@@ -34,6 +34,10 @@ args = [
   "apex.jorje.lsp.ApexLanguageServerLauncher",
 ]
 
+[language-server.kotlin-language-server]
+command = "kotlin-language-server"
+environment = { "JAVA_OPTS" = "-Xmx24g", "JAVA_TOOL_OPTIONS" = "-Xmx24g" }
+
 # tsgo
 [language-server.tsgo]
 command = "tsgo"
